@@ -14,7 +14,7 @@
         "careers": "Careers"
     },
     "hero": {
-        "season": "Ramadan Season 2024",
+        "season": "Ramadan Season 2026",
         "title": "Ramadan",
         "kareem": "Kareem",
         "arabicTitle": "رمضان كريم",
@@ -73,5 +73,66 @@
         "copyright": "© 2024 Meem Market. All rights reserved.",
         "privacyPolicy": "Privacy Policy",
         "termsOfService": "Terms of Service"
+    },
+    "about": {
+        "sectionLabel": "Get to Know Us",
+        "title": "About Meem Market",
+        "description": "Meem Market is one of the projects under Meem Distinguished Trading Company and serves as a comprehensive retail shopping center that meets the diverse needs of every family. The market features a wide variety of departments including household essentials, kitchenware, cleaning supplies, furnishings, décor and gifts, school supplies, and many other carefully curated products — delivering a complete shopping experience that combines variety and quality in one place.",
+        "missionTitle": "Our Mission",
+        "missionText": "We are committed to offering high-quality products that serve all segments of society through modern methods and contemporary operational standards, with a qualified team working within a professional framework to create a complete shopping experience that keeps pace with innovation, meets needs, and builds lasting trust.",
+        "goalTitle": "Our Goal",
+        "goalText": "We strive for sustainable excellence through attention to detail, a focus on customer comfort, and delivering a unique shopping experience that carries our identity, exceeds expectations, creates real value, fosters long-term loyalty, and makes us the first choice — always with confidence.",
+        "visionTitle": "Our Vision",
+        "visionText": "We believe in a market that is close to the family, providing daily necessities with dependable quality and fair prices within a comfortable shopping environment that balances value and variety, adapts to life's changes, and continuously offers everyone better choices in a smart and balanced way."
+    },
+    "competitiveValue": {
+        "sectionLabel": "Your Favorite Choice",
+        "title": "Meem Market — Your Favorite Choice",
+        "description": "Meem Market offers a complete and comprehensive shopping experience that combines product variety, quality selection, and competitive prices, all within an organized environment that meets your family's needs and provides everything you're looking for in one place.",
+        "varietyTitle": "Wide Variety of Products",
+        "varietyDesc": "A comprehensive range that meets all needs",
+        "qualityTitle": "Careful Selection Ensures Quality",
+        "qualityDesc": "Products chosen with exceptional care",
+        "savingsTitle": "Prices That Suit Everyone",
+        "savingsDesc": "Real value at competitive prices",
+        "oneStopTitle": "Everything Under One Roof",
+        "oneStopDesc": "Complete shopping in one place",
+        "discoverMore": "Discover Our Offers"
+    },
+    "ourFields": {
+        "introBadge": "Always Your Favorite Choice",
+        "title": "Meem Market",
+        "titleHighlight": "Your Favorite Choice",
+        "introDescription": "Meem Market offers a diverse range of departments that meet the needs of every family category, starting from basic necessities, through food products, to home improvement items, becoming a comprehensive destination for all family members. Meem is committed to providing high-quality products at competitive prices, along with open-price sections, with a continuous commitment to development and expansion to enhance a modern shopping experience.",
+        "quote": "Meem Market stands out with a complete and comprehensive shopping experience that combines product variety, quality selection, and competitive prices, in an organized environment that meets family needs and provides everything you are looking for in one place.",
+        "imageCard": {
+            "badge": "Quality and Excellence",
+            "title": "A Modern Interface for a Complete Shopping Experience",
+            "description": "An organized shopping environment that meets the highest global quality standards to ensure family comfort."
+        },
+        "highlights": {
+            "variety": {
+                "title": "Wide Variety of Products",
+                "description": "A carefully selected collection that meets all home and family needs under one roof."
+            },
+            "quality": {
+                "title": "Precise Selection Ensures Quality",
+                "description": "We apply strict standards in selecting suppliers to ensure the arrival of the best fresh products."
+            },
+            "value": {
+                "title": "Thoughtful Prices for Everyone",
+                "description": "Perfect balance between high value and competitive price for a smart shopping experience."
+            },
+            "convenience": {
+                "title": "All Your Needs Under One Roof",
+                "description": "Save time and effort in a comprehensive destination grouping everything you seek in an organized place."
+            }
+        },
+        "cta": {
+            "title": "Want to Know More?",
+            "subtitle": "We always strive for development and expansion to serve you better",
+            "link": "Discover Our Offers"
+        },
+        "footer": "Meem Market - Your Partner in Quality and Savings"
     }
 }

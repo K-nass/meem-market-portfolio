@@ -1,10 +1,7 @@
-'use client';
+import { getTranslations } from 'next-intl/server';
 
-import React from 'react';
-import { useTranslations } from 'next-intl';
-
-const Footer: React.FC = () => {
-    const t = useTranslations('footer');
+export default async function Footer() {
+    const t = await getTranslations('footer');
 
     return (
         <footer className="bg-white border-t border-gray-200 mt-auto">
@@ -80,6 +77,4 @@ const Footer: React.FC = () => {
             </div>
         </footer>
     );
-};
-
-export default Footer;
+}

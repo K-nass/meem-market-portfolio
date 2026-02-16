@@ -1,11 +1,8 @@
-'use client';
-
-import React from 'react';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import LocaleSwitcher from './LocaleSwitcher';
 
-const Navbar: React.FC = () => {
-    const t = useTranslations('common');
+export default async function Navbar() {
+    const t = await getTranslations('common');
 
     return (
         <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-primary/10">
@@ -42,6 +39,4 @@ const Navbar: React.FC = () => {
             </div>
         </nav>
     );
-};
-
-export default Navbar;
+}
