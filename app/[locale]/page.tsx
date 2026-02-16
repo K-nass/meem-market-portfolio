@@ -10,6 +10,9 @@ import CompetitiveValue from "../components/CompetitiveValue";
 import Footer from "../components/Footer";
 import BranchFilterSidebar from "../components/BranchFilter/BranchFilterSidebar";
 import { locations, branches } from "../data/branches";
+import WhyChooseUs from '../components/WhyChooseUs';
+import PartnersSlider from '../components/PartnersSlider';
+import Careers from '../components/Careers';
 
 export default async function Home() {
     const t = await getTranslations('categories');
@@ -111,6 +114,9 @@ export default async function Home() {
             <AboutUs />
             <CompetitiveValue />
             <OurFields />
+            <WhyChooseUs />
+            <PartnersSlider />
+            <Careers />
             <AppBanner />
             <Footer />
         </>

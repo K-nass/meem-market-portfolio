@@ -55,24 +55,22 @@
         "googlePlay": "Google Play"
     },
     "footer": {
-        "brandDescription": "Quality, freshness, and value in every visit. Proudly serving our community since 2010.",
-        "shopping": "Shopping",
-        "weeklyFlyer": "Weekly Flyer",
-        "ramadanSpecials": "Ramadan Specials",
-        "meemBrands": "Meem Brands",
-        "giftCards": "Gift Cards",
-        "customerCare": "Customer Care",
-        "helpCenter": "Help Center",
-        "returnsRefunds": "Returns & Refunds",
-        "storeLocator": "Store Locator",
+        "brandDescription": "Meem Market offers a complete shopping experience that combines product variety, quality selection, and competitive prices in an organized environment that meets your family's needs and provides everything you're looking for in one place.",
+        "quickLinks": "Quick Links",
+        "home": "Home",
+        "aboutUs": "About Us",
+        "ourProducts": "Our Products",
+        "careers": "Careers",
+        "departments": "Departments",
+        "basicNeeds": "Basic Needs",
+        "foodProducts": "Food Products",
+        "improvementProducts": "Improvement Products",
+        "cleaningSupplies": "Cleaning Supplies",
+        "kitchenware": "Kitchenware",
         "contactUs": "Contact Us",
-        "stayUpdated": "Stay Updated",
-        "stayUpdatedDesc": "Receive the latest offers and Ramadan recipes.",
-        "emailPlaceholder": "Email Address",
-        "subscribe": "Subscribe",
-        "copyright": "© 2024 Meem Market. All rights reserved.",
-        "privacyPolicy": "Privacy Policy",
-        "termsOfService": "Terms of Service"
+        "contactDescription": "We are here to serve you. Contact us",
+        "contactLink": "Get in Touch",
+        "copyright": "© 2026 Meem Market - All rights reserved."
     },
     "about": {
         "sectionLabel": "Get to Know Us",
@@ -147,5 +145,41 @@
         "closeFilters": "Close Filters",
         "applyFilters": "Apply Filters",
         "clearFilters": "Clear Filters"
+    },
+    "whyChooseUs": {
+        "badge": "Welcome to Your First Destination",
+        "title": "One Market... Unlimited Choices",
+        "description": "We are here to provide you with the best shopping experience in the region, where quality meets comfort at every corner.",
+        "manyProducts": {
+            "title": "Many Products",
+            "description": "We carefully select the best local and international products at competitive prices that meet your family's aspirations and ensure the highest quality standards.",
+            "link": "Discover More"
+        },
+        "spaciousAreas": {
+            "title": "Spacious Areas",
+            "description": "Enjoy a unique shopping experience in spacious areas carefully designed to provide comfort and ease of navigation, with precise organization of all departments.",
+            "link": "Virtual Tour"
+        },
+        "familyDestination": {
+            "title": "Family Destination",
+            "description": "We built our reputation on trust and quality to be the first and safe choice for every family, where we care about the smallest details that matter to you and make your visit enjoyable.",
+            "link": "Family Services"
+        },
+        "cta": {
+            "title": "Looking for an Exceptional Shopping Experience?",
+            "subtitle": "We are waiting for you at our branches",
+            "nearbyBranches": "Our Nearby Branches",
+            "contactUs": "Contact Us"
+        }
+    },
+    "partners": {
+        "title": "Success Partners",
+        "subtitle": "Partners we are proud to have in our locations"
+    },
+    "careers": {
+        "badge": "Careers at Meem",
+        "title": "Start a Successful Career with Meem Markets",
+        "description": "Join our team and be part of a leading company in the retail sector. We offer a stimulating work environment and opportunities for personal and professional growth.",
+        "button": "Explore Opportunities"
     }
 }
