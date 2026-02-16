@@ -3,6 +3,8 @@ import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import "../globals.css";
+import Navbar from "../components/Home/Navbar";
+import Footer from "../components/Home/Footer";
 
 export const metadata: Metadata = {
     title: "Meem Market - Ramadan Offers",
@@ -28,6 +30,9 @@ export default async function RootLayout({
 
     const dir = locale === "ar" ? "rtl" : "ltr";
 
+    // Check if current path is career page
+    const isCareerPage = false; // Will be handled by career layout
+
     return (
         <html lang={locale} dir={dir}>
             <head>
@@ -36,7 +41,9 @@ export default async function RootLayout({
             </head>
             <body className="bg-pattern min-h-screen flex flex-col antialiased">
                 <NextIntlClientProvider>
+                    <Navbar />
                     {children}
+                    <Footer />
                 </NextIntlClientProvider>
             </body>
         </html>
