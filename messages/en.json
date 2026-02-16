@@ -134,5 +134,18 @@
             "link": "Discover Our Offers"
         },
         "footer": "Meem Market - Your Partner in Quality and Savings"
+    },
+    "branchFilter": {
+        "title": "Select Your Branch",
+        "selectLocation": "Select Location",
+        "selectBranch": "Select Branch",
+        "noLocationSelected": "Please select a location first",
+        "noBranchesAvailable": "No branches available",
+        "loading": "Loading branches...",
+        "error": "Failed to load branches",
+        "openFilters": "Open Filters",
+        "closeFilters": "Close Filters",
+        "applyFilters": "Apply Filters",
+        "clearFilters": "Clear Filters"
     }
 }

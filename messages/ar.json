@@ -134,5 +134,18 @@
             "link": "اكتشف عروضنا"
         },
         "footer": "سوق ميم - شريككم في الجودة والتوفير"
+    },
+    "branchFilter": {
+        "title": "اختر فرعك",
+        "selectLocation": "اختر الموقع",
+        "selectBranch": "اختر الفرع",
+        "noLocationSelected": "الرجاء اختيار موقع أولاً",
+        "noBranchesAvailable": "لا توجد فروع متاحة",
+        "loading": "جاري تحميل الفروع...",
+        "error": "فشل تحميل الفروع",
+        "openFilters": "فتح الفلاتر",
+        "closeFilters": "إغلاق الفلاتر",
+        "applyFilters": "تطبيق الفلاتر",
+        "clearFilters": "مسح الفلاتر"
     }
 }
