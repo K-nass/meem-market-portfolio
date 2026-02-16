@@ -1,10 +1,7 @@
-'use client';
+import { getTranslations } from 'next-intl/server';
 
-import React from 'react';
-import { useTranslations } from 'next-intl';
-
-const Hero: React.FC = () => {
-    const t = useTranslations('hero');
+export default async function Hero() {
+    const t = await getTranslations('hero');
 
     return (
         <header className="relative overflow-hidden group">
@@ -74,6 +71,4 @@ const Hero: React.FC = () => {
             </div>
         </header>
     );
-};
-
-export default Hero;
+}

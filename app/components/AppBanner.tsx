@@ -1,10 +1,7 @@
-'use client';
+import { getTranslations } from 'next-intl/server';
 
-import React from 'react';
-import { useTranslations } from 'next-intl';
-
-const AppBanner: React.FC = () => {
-    const t = useTranslations('appBanner');
+export default async function AppBanner() {
+    const t = await getTranslations('appBanner');
 
     return (
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20 w-full">
@@ -45,6 +42,4 @@ const AppBanner: React.FC = () => {
             </div>
         </section>
     );
-};
-
-export default AppBanner;
+}

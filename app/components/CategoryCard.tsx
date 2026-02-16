@@ -1,8 +1,3 @@
-'use client';
-
-import React from 'react';
-import { useTranslations } from 'next-intl';
-
 interface CategoryCardProps {
     title: string;
     arabicTitle: string;
@@ -18,7 +13,7 @@ interface CategoryCardProps {
     offLabel?: string;
 }
 
-const CategoryCard: React.FC<CategoryCardProps> = ({
+export default function CategoryCard({
     title,
     arabicTitle,
     description,
@@ -31,7 +26,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
     shopNowLabel = 'Shop Now',
     viewCollectionLabel = 'View Collection',
     offLabel = 'OFF'
-}) => {
+}: CategoryCardProps) {
     const getVariantStyles = () => {
         switch (variant) {
             case 'large':
@@ -129,6 +124,4 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
             )}
         </div>
     );
-};
-
-export default CategoryCard;
+}
