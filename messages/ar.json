@@ -20,8 +20,12 @@
         "arabicTitle": "رمضان كريم",
         "tagline": "كل زيارة لها قيمة",
         "taglineSecondary": "Every visit has value.",
+        "mainHeading": "كل ما تحتاجه في مكان واحد",
+        "subheading": "سوق ميم… وجهتك الشاملة للتسوق الذكي",
+        "callToAction": "اختر دولتك للوصول إلى العروض المتاحة، والفروع، وقنوات التواصل",
         "exploreOffers": "تصفح العروض",
-        "downloadCalendar": "تحميل التقويم"
+        "downloadCalendar": "تحميل التقويم",
+        "heroImageAlt": "صورة بطل سوق ميم"
     },
     "categories": {
         "seasonalCollections": "المجموعات الموسمية",

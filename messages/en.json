@@ -20,8 +20,12 @@
         "arabicTitle": "رمضان كريم",
         "tagline": "Every visit has value.",
         "taglineSecondary": "كل زيارة لها قيمة",
+        "mainHeading": "Everything You Need in One Place",
+        "subheading": "Meem Market... Your Comprehensive Destination for Smart Shopping",
+        "callToAction": "Choose your country to access available offers, branches, and contact channels",
         "exploreOffers": "Explore Offers",
-        "downloadCalendar": "Download Calendar"
+        "downloadCalendar": "Download Calendar",
+        "heroImageAlt": "Meem Market hero image"
     },
     "categories": {
         "seasonalCollections": "Seasonal Collections",

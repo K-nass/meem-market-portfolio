@@ -22,7 +22,7 @@ export default async function Home() {
             {/* Container for sidebar positioning - starts after hero */}
             <div className="relative">
                 {/* Sidebar - Positioned absolutely within this container */}
-                <div className="hidden lg:block absolute left-4 top-0 z-30 w-64">
+                <div className="hidden lg:block absolute left-4 top-24 z-30 w-64">
                     <BranchFilterSidebar
                         locations={locations}
                         branches={branches}
@@ -30,7 +30,7 @@ export default async function Home() {
                 </div>
 
                 {/* Main Content - Full width, unaffected by sidebar */}
-                <main className="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-20 relative z-20 pb-20 w-full">
+                <main className="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 relative z-20 pb-20 w-full">
                     {/* Section Header */}
                     <div className="flex flex-col md:flex-row justify-between items-end mb-8 text-white md:text-gray-800">
                         <div>

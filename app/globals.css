@@ -118,3 +118,96 @@ html {
 [dir="ltr"] {
   font-family: var(--font-display);
 }
+
+/* Hero Image Zoom Animation */
+@keyframes zoomIn {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+
+.hero-image-zoom {
+  animation: zoomIn 5s ease-out forwards;
+}
+
+/* Swiper Navigation Arrows */
+.swiper-button-next,
+.swiper-button-prev {
+  color: white !important;
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(10px);
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 8px !important;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 18px !important;
+  font-weight: 600;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background-color: rgba(255, 255, 255, 0.25) !important;
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Ensure visibility on mobile */
+@media (max-width: 768px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 44px !important;
+    height: 44px !important;
+  }
+  
+  .swiper-button-next:after,
+  .swiper-button-prev:after {
+    font-size: 16px !important;
+  }
+}
+/* Swiper Pagination Bullets */
+.swiper-pagination-bullet {
+  width: 12px !important;
+  height: 12px !important;
+  background-color: rgba(255, 255, 255, 0.5) !important;
+  opacity: 1 !important;
+  transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: var(--primary) !important;
+  width: 32px !important;
+  border-radius: 6px !important;
+}
+
+.swiper-pagination-bullet:hover {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Position pagination at bottom center */
+.swiper-pagination {
+  bottom: 20px !important;
+}
+
+@media (max-width: 768px) {
+  .swiper-pagination {
+    bottom: 12px !important;
+  }
+  
+  .swiper-pagination-bullet {
+    width: 10px !important;
+    height: 10px !important;
+  }
+  
+  .swiper-pagination-bullet-active {
+    width: 24px !important;
+  }
+}
