@@ -1,8 +1,10 @@
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, getLocale } from 'next-intl/server';
 import LocaleSwitcher from './LocaleSwitcher';
+import { Link } from '@/i18n/navigation';
 
 export default async function Navbar() {
     const t = await getTranslations('common');
+    const locale = await getLocale();
 
     return (
         <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-primary/10">
@@ -14,13 +16,25 @@ export default async function Navbar() {
                     </div>
 
                     {/* Desktop Menu */}
-                    <div className="hidden md:flex space-x-8 rtl:space-x-reverse items-center">
-                        <a href="#" className="hover:text-primary transition-colors font-medium text-secondary-text">{t('home')}</a>
-                        <a href="#" className="hover:text-primary transition-colors font-medium text-secondary-text">{t('offers')}</a>
-                        <a href="#" className="hover:text-primary transition-colors font-medium text-secondary-text">{t('aboutUs')}</a>
-                        <a href="#" className="hover:text-primary transition-colors font-medium text-secondary-text">{t('ourProducts')}</a>
-                        <a href="#" className="hover:text-primary transition-colors font-medium text-secondary-text">{t('ourBranches')}</a>
-                        <a href="#" className="hover:text-primary transition-colors font-medium text-secondary-text">{t('careers')}</a>
+                    <div className="hidden md:flex space-x-8 rtl:space-x-reverse items-center gap-2">
+                        <Link href="/" className="hover:text-primary transition-colors font-medium text-secondary-text">
+                            {t('home')}
+                        </Link>
+                        <Link href="#" className="hover:text-primary transition-colors font-medium text-secondary-text">
+                            {t('offers')}
+                        </Link>
+                        <Link href="#" className="hover:text-primary transition-colors font-medium text-secondary-text">
+                            {t('aboutUs')}
+                        </Link>
+                        <Link href="#" className="hover:text-primary transition-colors font-medium text-secondary-text">
+                            {t('ourProducts')}
+                        </Link>
+                        <Link href="#" className="hover:text-primary transition-colors font-medium text-secondary-text">
+                            {t('ourBranches')}
+                        </Link>
+                        <Link href="/career" className="hover:text-primary transition-colors font-medium text-secondary-text">
+                            {t('careers')}
+                        </Link>
                     </div>
 
                     {/* Actions */}

@@ -10,6 +10,7 @@
   --background-light: #f5f8fc;
   --gold: #d4af37;
   --gold-light: #f3e5ab;
+  --accent: #16a34a;
   --secondary-text: #6b7c93;
   --white: #ffffff;
   --gray-200: #e5e7eb;
@@ -22,6 +23,7 @@
   --color-background-light: var(--background-light);
   --color-gold: var(--gold);
   --color-gold-light: var(--gold-light);
+  --color-accent: var(--accent);
   --color-secondary-text: var(--secondary-text);
 
   --font-display: "Inter", "Almarai", sans-serif;

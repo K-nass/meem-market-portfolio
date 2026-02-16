@@ -181,5 +181,58 @@
         "title": "Start a Successful Career with Meem Markets",
         "description": "Join our team and be part of a leading company in the retail sector. We offer a stimulating work environment and opportunities for personal and professional growth.",
         "button": "Explore Opportunities"
+    },
+    "careerPage": {
+        "hero": {
+            "badge": "New Job Opportunities",
+            "title": "Launch Your Professional Career",
+            "description": "Working with us is not just a job, but a unique opportunity to achieve great accomplishments and reach your personal and professional goals in a motivating and creative work environment.",
+            "primaryButton": "Join Our Team",
+            "imageAlt": "Professional team in a modern office environment"
+        },
+        "stats": {
+            "employees": "Distinguished Employees",
+            "branches": "Branches Across the Kingdom",
+            "safeEnvironment": "Safe Work Environment",
+            "support": "Professional Support & Development"
+        },
+        "jobListings": {
+            "title": "Available Jobs - Diverse Opportunities Await You...",
+            "subtitle": "We are always looking for talented and passionate individuals",
+            "viewDetails": "View Details",
+            "fullTime": "Full Time",
+            "jobs": {
+                "videoEditor": {
+                    "title": "Video Editor Designer",
+                    "badge": "Most Requested",
+                    "location": "Riyadh, Saudi Arabia",
+                    "description": "We are looking for a creative video editor to highlight Meem Market's visual identity."
+                },
+                "salesperson": {
+                    "title": "Salesperson",
+                    "badge": "Field Service",
+                    "location": "Riyadh, Saudi Arabia",
+                    "requirements": "Experience in customer service and excellent communication skills."
+                },
+                "customerService": {
+                    "title": "Customer Service",
+                    "badge": "Customer Service",
+                    "location": "Riyadh, KSA",
+                    "postedDate": "Posted 2 days ago"
+                },
+                "cashier": {
+                    "title": "Cashier",
+                    "badge": "Sales",
+                    "location": "Riyadh, KSA",
+                    "postedDate": "Posted 4 days ago"
+                }
+            }
+        },
+        "talentPool": {
+            "title": "Didn't Find Your Job?",
+            "description": "We are always happy to meet distinguished talents. Send your CV and we will contact you as soon as a suitable position becomes available for your skills.",
+            "email": "career@meem-market.com",
+            "button": "Contact Us"
+        }
     }
 }

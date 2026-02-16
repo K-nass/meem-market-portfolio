@@ -1,27 +1,24 @@
 
 import { getTranslations } from "next-intl/server";
-import Navbar from "../components/Navbar";
-import Hero from "../components/Hero";
-import CategoryCard from "../components/CategoryCard";
-import AppBanner from "../components/AppBanner";
-import AboutUs from "../components/AboutUs";
-import OurFields from "../components/OurFields";
-import CompetitiveValue from "../components/CompetitiveValue";
-import Footer from "../components/Footer";
+import Hero from "../components/Home/Hero";
+import CategoryCard from "../components/Home/CategoryCard";
+import AppBanner from "../components/Home/AppBanner";
+import AboutUs from "../components/Home/AboutUs";
+import OurFields from "../components/Home/OurFields";
+import CompetitiveValue from "../components/Home/CompetitiveValue";
+import Footer from "../components/Home/Footer";
 import BranchFilterSidebar from "../components/BranchFilter/BranchFilterSidebar";
 import { locations, branches } from "../data/branches";
-import WhyChooseUs from '../components/WhyChooseUs';
-import PartnersSlider from '../components/PartnersSlider';
-import Careers from '../components/Careers';
+import WhyChooseUs from '../components/Home/WhyChooseUs';
+import PartnersSlider from '../components/Home/PartnersSlider';
+import Careers from '../components/Home/Careers';
 
 export default async function Home() {
     const t = await getTranslations('categories');
 
     return (
         <>
-            <Navbar />
             <Hero />
-            
             {/* Container for sidebar positioning - starts after hero */}
             <div className="relative">
                 {/* Sidebar - Positioned absolutely within this container */}
@@ -118,7 +115,6 @@ export default async function Home() {
             <PartnersSlider />
             <Careers />
             <AppBanner />
-            <Footer />
         </>
     );
 }
