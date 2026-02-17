@@ -11,7 +11,9 @@
         "aboutUs": "About Us",
         "ourProducts": "Our Products",
         "ourBranches": "Our Branches",
-        "careers": "Careers"
+        "careers": "Careers",
+        "menu": "Menu",
+        "close": "Close"
     },
     "hero": {
         "season": "Ramadan Season 2026",
@@ -311,5 +313,18 @@
             "email": "career@meem-market.com",
             "button": "Contact Us"
         }
+    },
+    "branches": {
+        "title": "Meem Market Branch Network",
+        "subtitle": "We cover several areas to provide an easy shopping experience close to you",
+        "filterAll": "All",
+        "filterKuwait": "Kuwait",
+        "filterSaudiArabia": "Saudi Arabia",
+        "noBranchesFound": "No branches found for the selected filter",
+        "phone": "Phone",
+        "hours": "Hours",
+        "openingHours": "Open {open} - {close}",
+        "mapLoadError": "Unable to load map. Please try again later.",
+        "selectBranch": "Select a branch to view details"
     }
 }

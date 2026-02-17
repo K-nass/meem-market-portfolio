@@ -3,6 +3,7 @@ import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import "../globals.css";
+import "leaflet/dist/leaflet.css";
 import Navbar from "../components/Home/Navbar";
 import Footer from "../components/Home/Footer";
 
