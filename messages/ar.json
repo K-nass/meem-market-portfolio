@@ -11,7 +11,9 @@
         "aboutUs": "من نحن ؟",
         "ourProducts": "منتجاتنا",
         "ourBranches": "فروعنا",
-        "careers": "الوظائف"
+        "careers": "الوظائف",
+        "menu": "القائمة",
+        "close": "إغلاق"
     },
     "hero": {
         "season": "موسم رمضان 2026",
@@ -238,5 +240,18 @@
             "email": "career@meem-market.com",
             "button": "تواصل معنا"
         }
+    },
+    "branches": {
+        "title": "شبكة فروع سوق ميم",
+        "subtitle": "نُغطي عدة مناطق لتوفير تجربة تسوق سهلة وقريبة منك",
+        "filterAll": "الكل",
+        "filterKuwait": "الكويت",
+        "filterSaudiArabia": "السعودية",
+        "noBranchesFound": "لا توجد فروع للفلتر المحدد",
+        "phone": "الهاتف",
+        "hours": "ساعات العمل",
+        "openingHours": "مفتوح {open} - {close}",
+        "mapLoadError": "تعذر تحميل الخريطة. يرجى المحاولة مرة أخرى لاحقاً.",
+        "selectBranch": "اختر فرعاً لعرض التفاصيل"
     }
 }
