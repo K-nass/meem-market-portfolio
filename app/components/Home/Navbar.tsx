@@ -23,10 +23,10 @@ export default async function Navbar() {
                         <Link href="#" className="hover:text-primary transition-colors font-medium text-secondary-text">
                             {t('offers')}
                         </Link>
-                        <Link href="#" className="hover:text-primary transition-colors font-medium text-secondary-text">
+                        <Link href="/#about" className="hover:text-primary transition-colors font-medium text-secondary-text">
                             {t('aboutUs')}
                         </Link>
-                        <Link href="#" className="hover:text-primary transition-colors font-medium text-secondary-text">
+                        <Link href="/#products" className="hover:text-primary transition-colors font-medium text-secondary-text">
                             {t('ourProducts')}
                         </Link>
                         <Link href="#" className="hover:text-primary transition-colors font-medium text-secondary-text">

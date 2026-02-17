@@ -73,10 +73,14 @@ export default async function Home({ params }: { params: { locale: string } }) {
                     </div>
 
                     {/* Bento Grid Layout */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-[280px]">
-                        {/* Featured Categories Swiper */}
-                        <FeaturedCategoriesSwiper
-                            categories={featuredCategories}
+                    <div id="products" className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-[280px]">
+                        <CategoryCard
+                            variant="large"
+                            title={t('ramadanEssentials')}
+                            arabicTitle="أساسيات رمضان"
+                            description={t('ramadanEssentialsDesc')}
+                            image="https://lh3.googleusercontent.com/aida-public/AB6AXuBSmF-ftYBr6vUMECsnAVqCyqFo6qX5d3fPHsIog8G6HQbdNuiGGO2HLpw3haLjE_dd0mSvwPliLHd_2BFz9Q1x4VU6fkSTLiqFumdVvcRoAXMskjDqXBy_lBGRNMw_8LBV5Pq58wmEFwG81ZfPKElMDapnxKTYrCSPGMfuj68tbgVS6bYh2st_LTnlpSfW3TKmfuqrce3nte-G_MIw2EoMFuq3Zqdu8rnapiGblvHSbuANpyrxzHwuBKXWJXcZNgw7fWl5b9HEPv5b"
+                            badge={t('topOffers')}
                             shopNowLabel={t('shopNow')}
                             locale={locale}
                         />
