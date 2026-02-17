@@ -1,5 +1,5 @@
 import { getTranslations } from 'next-intl/server';
-import HeroSwiper from './HeroSwiper';
+import HeroSwiper from '../HeroSwiper';
 
 export default async function Hero() {
     const t = await getTranslations('hero');

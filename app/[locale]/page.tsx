@@ -43,7 +43,7 @@ export default async function Home() {
                     </div>
 
                     {/* Bento Grid Layout */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-[280px]">
+                    <div id="products" className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-[280px]">
                         <CategoryCard
                             variant="large"
                             title={t('ramadanEssentials')}
