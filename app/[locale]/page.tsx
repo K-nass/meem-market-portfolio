@@ -2,6 +2,7 @@
 import { getTranslations } from "next-intl/server";
 import Hero from "../components/Home/Hero";
 import CategoryCard from "../components/Home/CategoryCard";
+import FeaturedCategoriesSwiper from "../components/Home/FeaturedCategoriesSwiper";
 import AppBanner from "../components/Home/AppBanner";
 import AboutUs from "../components/Home/AboutUs";
 import OurFields from "../components/Home/OurFields";
@@ -9,12 +10,41 @@ import CompetitiveValue from "../components/Home/CompetitiveValue";
 import Footer from "../components/Home/Footer";
 import BranchFilterSidebar from "../components/BranchFilter/BranchFilterSidebar";
 import { locations, branches } from "../data/branches";
+import { getFeaturedCategories, categories } from "../data/categories";
 import WhyChooseUs from '../components/Home/WhyChooseUs';
 import PartnersSlider from '../components/Home/PartnersSlider';
 import Careers from '../components/Home/Careers';
 
-export default async function Home() {
+export default async function Home({ params }: { params: { locale: string } }) {
+    // Validate locale parameter against supported locales
+    const validLocales = ['en', 'ar'];
+    const locale = params?.locale && validLocales.includes(params.locale) 
+        ? params.locale 
+        : 'en';
+    
     const t = await getTranslations('categories');
+    
+    // Fetch featured categories for swiper with validation
+    const allFeaturedCategories = getFeaturedCategories();
+    
+    // Filter out invalid categories (must have required fields)
+    const validFeaturedCategories = allFeaturedCategories.filter(cat => 
+        cat?.id && 
+        cat?.title && 
+        cat?.arabicTitle && 
+        cat?.imagePath
+    );
+    
+    // Provide fallback if no valid featured categories exist
+    const featuredCategories = validFeaturedCategories.length > 0 
+        ? validFeaturedCategories 
+        : categories.filter(c => c?.id && c?.title && c?.arabicTitle && c?.imagePath).slice(0, 3);
+    
+    // Get specific categories for static cards by ID with optional chaining
+    const tallCategory = categories.find(c => c?.id === 'plastic-hardware');
+    const wideCategory = categories.find(c => c?.id === 'household-items');
+    const smallCategory = categories.find(c => c?.id === 'gifts-collectibles');
+    const recipeCategory = categories.find(c => c?.id === 'vegetables-fruits');
 
     return (
         <>
@@ -44,58 +74,73 @@ export default async function Home() {
 
                     {/* Bento Grid Layout */}
                     <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-[280px]">
-                        <CategoryCard
-                            variant="large"
-                            title={t('ramadanEssentials')}
-                            arabicTitle="أساسيات رمضان"
-                            description={t('ramadanEssentialsDesc')}
-                            image="https://lh3.googleusercontent.com/aida-public/AB6AXuBSmF-ftYBr6vUMECsnAVqCyqFo6qX5d3fPHsIog8G6HQbdNuiGGO2HLpw3haLjE_dd0mSvwPliLHd_2BFz9Q1x4VU6fkSTLiqFumdVvcRoAXMskjDqXBy_lBGRNMw_8LBV5Pq58wmEFwG81ZfPKElMDapnxKTYrCSPGMfuj68tbgVS6bYh2st_LTnlpSfW3TKmfuqrce3nte-G_MIw2EoMFuq3Zqdu8rnapiGblvHSbuANpyrxzHwuBKXWJXcZNgw7fWl5b9HEPv5b"
-                            badge={t('topOffers')}
+                        {/* Featured Categories Swiper */}
+                        <FeaturedCategoriesSwiper
+                            categories={featuredCategories}
                             shopNowLabel={t('shopNow')}
+                            locale={locale}
                         />
-                        <CategoryCard
-                            variant="tall"
-                            title={t('freshProduce')}
-                            arabicTitle="منتجات طازجة"
-                            description={t('freshProduceDesc')}
-                            image="https://lh3.googleusercontent.com/aida-public/AB6AXuBaHrZ6WzHhIiGlHKwTy9sMMSOahQSB9wSmS9ntgc0GdWAap7A6ajP9Grv4-SBsB_ZTKXF54WN9ibf4icTHiTc2n1Ects5R7VcxWYy4yMkvz8j_WHqZIpjBFptUaDFvI_fU_adJUlvNc9Mt6YfpizZXNuSkrDIOTwbTiM4i2rfSBFo5wlv0HV3zcpDOjHQzpi61XjELQZr71u4g9F1I94IWJwacV_NztDpORfMLZjT3hdlOnl8kyLfNKdqxdjoKIbLwLe7mzTu4nzk4"
-                        />
-                        <CategoryCard
-                            variant="wide"
-                            title={t('household')}
-                            arabicTitle="أدوات منزلية"
-                            image="https://lh3.googleusercontent.com/aida-public/AB6AXuBPRcEkOUzCRgjfiHDySZ9pqvjB3fhepQ2PDUYqYKKs3sf5zZO8Ig9DgDZdqHzyHXAoOJIy2ShSfw3FnIdji8VAPRv1pIgycT97aB90oedWP-pOqZaOyzNd_FApJgjxlGXCvnBdozQJSoy3WsDDdyMtToh9G08DrqmrEse9XcGz4-B-rxIFdtJ5Nl1zcC2idU1QFv6mfKeoIvWK7vWTBV3J-fJKxwKu25_caOo0MaHlwgyNT5EXv2LQsyXkmvvv0WIHhL9U3kMlQsOp"
-                            discount="40%"
-                            icon="countertops"
-                            offLabel={t('off')}
-                        />
-                        <CategoryCard
-                            variant="small"
-                            title={t('giftSets')}
-                            arabicTitle="مجموعات الهدايا"
-                            image="https://lh3.googleusercontent.com/aida-public/AB6AXuAsU3D_6e6Vx_5iva2oLCroFG-OioXTGG2HwKCES0hy8LjJtRplyrCUYUf1F8uty3kt-O4uVv376G5BkCXWzjxEX3oThqLG7HwQh5ds0WXgWGrTjFQAUOyA33XVNnr3R7Yry6FqoZi__sDyUs0LuGomf2EGdrX5zCsZIWSGNSp47nVKPlIVr6Qka53wftT_NUNaqXBvrKhKoYP1-UbKCM4f__G1FYAtcUhEj7ENy-w_gbCH-MDXz2jDbyo9YH38D_-FSfZrPAm5WWwU"
-                            badge={t('premium')}
-                            viewCollectionLabel={t('viewCollection')}
-                        />
-                        <CategoryCard
-                            variant="recipe"
-                            title={t('iftarInspiration')}
-                            arabicTitle=""
-                            description={t('iftarInspirationDesc')}
-                            image="https://lh3.googleusercontent.com/aida-public/AB6AXuAj94Em9UvY1g7Heeu3-rGEu-Z9QzttWusTPE2peEuVApKkEsTWlrHzhjxu8nh-v0xObpRuzxZPt85ehzqdAdme-owGrLHLodWKWFdG5_vBGPLJK9Z87sapt86EcAWW0pidAB3K9pFWb6cNrXYdkjGReuy2Y9z70F9eEQcO6GecyW3rLNVpPhj_9Xb9SrKa4f50PK8N-f9bU5fBo8LqZJI3oSU-ylU-fFMp9-ykLleTyf5U7Nr_MMDCllHh7GlQ3TWmsRLUhfIR6iln"
-                            badge={t('chefsCorner')}
-                            readRecipesLabel={t('readRecipes')}
-                        />
+                        {tallCategory && (
+                            <CategoryCard
+                                variant="tall"
+                                title={tallCategory?.title}
+                                arabicTitle={tallCategory?.arabicTitle}
+                                description={tallCategory?.description}
+                                image={tallCategory?.imagePath}
+                                badge={tallCategory?.badge}
+                                discount={tallCategory?.discount}
+                                icon={tallCategory?.icon}
+                            />
+                        )}
+                        {wideCategory && (
+                            <CategoryCard
+                                variant="wide"
+                                title={wideCategory?.title}
+                                arabicTitle={wideCategory?.arabicTitle}
+                                description={wideCategory?.description}
+                                image={wideCategory?.imagePath}
+                                badge={wideCategory?.badge}
+                                discount={wideCategory?.discount}
+                                icon={wideCategory?.icon}
+                                offLabel={t('off')}
+                            />
+                        )}
+                        {smallCategory && (
+                            <CategoryCard
+                                variant="small"
+                                title={smallCategory?.title}
+                                arabicTitle={smallCategory?.arabicTitle}
+                                description={smallCategory?.description}
+                                image={smallCategory?.imagePath}
+                                badge={smallCategory?.badge}
+                                discount={smallCategory?.discount}
+                                icon={smallCategory?.icon}
+                                viewCollectionLabel={t('viewCollection')}
+                            />
+                        )}
+                        {recipeCategory && (
+                            <CategoryCard
+                                variant="recipe"
+                                title={recipeCategory?.title}
+                                arabicTitle={recipeCategory?.arabicTitle}
+                                description={recipeCategory?.description}
+                                image={recipeCategory?.imagePath}
+                                badge={recipeCategory?.badge}
+                                discount={recipeCategory?.discount}
+                                icon={recipeCategory?.icon}
+                                readRecipesLabel={t('readRecipes')}
+                            />
+                        )}
 
                         {/* Charity Box */}
-                        <div className="md:col-span-1 md:row-span-1 group relative overflow-hidden rounded-[24px] shadow-lg hover-lift bg-gradient-to-br from-[#1a3a1a] to-[#0d1f0d] p-6 text-center flex flex-col items-center justify-center cursor-pointer border border-white/5">
+                        {/* <div className="md:col-span-1 md:row-span-1 group relative overflow-hidden rounded-[24px] shadow-lg hover-lift bg-gradient-to-br from-[#1a3a1a] to-[#0d1f0d] p-6 text-center flex flex-col items-center justify-center cursor-pointer border border-white/5">
                             <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                                 <span className="material-icons-outlined text-gold text-3xl">volunteer_activism</span>
                             </div>
                             <h3 className="text-white font-bold text-lg mb-1">{t('charityBox')}</h3>
                             <p className="text-gray-400 text-xs mb-4">{t('charityBoxDesc')}</p>
                             <button className="text-xs bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-lg transition-colors w-full">{t('donateNow')}</button>
-                        </div>
+                        </div> */}
                     </div>
 
                     {/* Mobile/Tablet Sidebar */}
