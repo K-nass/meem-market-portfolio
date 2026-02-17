@@ -20,7 +20,7 @@ export default async function Navbar() {
                         <Link href="/" className="hover:text-primary transition-colors font-medium text-secondary-text">
                             {t('home')}
                         </Link>
-                        <Link href="#" className="hover:text-primary transition-colors font-medium text-secondary-text">
+                        <Link href="/offers" className="hover:text-primary transition-colors font-medium text-secondary-text">
                             {t('offers')}
                         </Link>
                         <Link href="#" className="hover:text-primary transition-colors font-medium text-secondary-text">
