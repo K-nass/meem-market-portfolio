@@ -150,7 +150,8 @@
         "openFilters": "Open Filters",
         "closeFilters": "Close Filters",
         "applyFilters": "Apply Filters",
-        "clearFilters": "Clear Filters"
+        "clearFilters": "Clear Filters",
+        "showOffers": "Show Offers"
     },
     "whyChooseUs": {
         "badge": "Welcome to Your First Destination",
@@ -187,6 +188,78 @@
         "title": "Start a Successful Career with Meem Markets",
         "description": "Join our team and be part of a leading company in the retail sector. We offer a stimulating work environment and opportunities for personal and professional growth.",
         "button": "Explore Opportunities"
+    },
+    "offersPage": {
+        "hero": {
+            "badge": "Certified Exclusive Offers",
+            "title": "Current Offers in",
+            "description": "Discover exceptional value carefully curated across our premium departments. We update our offers weekly to ensure you always get the best.",
+            "country": "Saudi Arabia",
+            "city": "Riyadh",
+            "branch": "Al Olaya"
+        },
+        "filter": {
+            "countryLabel": "Country",
+            "cityLabel": "City",
+            "branchLabel": "Branch",
+            "countries": ["Saudi Arabia", "United Arab Emirates", "Kuwait"],
+            "cities": ["Riyadh", "Jeddah", "Dammam"],
+            "branches": ["Al Olaya Main Branch", "Al Malqa Branch", "Al Nakheel Branch"]
+        },
+        "offers": {
+            "seasonal": {
+                "badge": "Seasonal Deals",
+                "title": "Luxury Winter Discounts",
+                "description": "A curated selection of luxury home essentials and décor with discounts up to 40%.",
+                "button": "Browse Catalog"
+            },
+            "fresh": {
+                "badge": "Fresh Daily",
+                "title": "Organic Farm Harvest",
+                "description": "The best local and international products at exceptional prices this week.",
+                "button": "Discover More"
+            },
+            "tech": {
+                "badge": "Electronics",
+                "title": "Tech Corner",
+                "description": "Latest home innovations"
+            },
+            "household": {
+                "badge": "Family Savings",
+                "title": "Household Essentials",
+                "description": "XL family savings offers including cleaning supplies and essential tools.",
+                "progressLabel": "Offer ends soon",
+                "button": "View Products"
+            },
+            "gourmet": {
+                "badge": "Gourmet Selection",
+                "title": "International Corner Offers",
+                "description": "Exclusive imported items for connoisseurs, French cheese, Italian olive oil, and more.",
+                "button": "Taste Luxury"
+            },
+            "flash": {
+                "title": "24-Hour Deals",
+                "description": "Exclusive deals that change daily, available only via the app.",
+                "button": "Download App Now"
+            }
+        },
+        "whyChoose": {
+            "title": "Why Choose Meem Market Offers?",
+            "features": {
+                "quality": {
+                    "title": "Guaranteed Quality",
+                    "description": "We carefully select our partners to ensure the highest quality standards for every product."
+                },
+                "delivery": {
+                    "title": "Corporate Delivery",
+                    "description": "Dedicated delivery services for homes and businesses with safety guarantee."
+                },
+                "pricing": {
+                    "title": "Competitive Prices",
+                    "description": "We are committed to providing the best value to our customers through strategic partnerships."
+                }
+            }
+        }
     },
     "careerPage": {
         "hero": {

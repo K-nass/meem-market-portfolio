@@ -1,12 +1,13 @@
 'use client';
 
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Location, Branch } from '@/app/types/branch';
 import { useResponsive } from '@/app/hooks/useResponsive';
 import LocationSelector from './LocationSelector';
 import BranchList from './BranchList';
+import Link from 'next/link';
 
 interface BranchFilterSidebarProps {
   locations: Location[];
@@ -152,6 +153,19 @@ const BranchFilterSidebar: React.FC<BranchFilterSidebarProps> = ({
           ) : (
             <div className="mt-4 p-3 text-center text-secondary-text text-xs" role="status">
               {t('noLocationSelected')}
+            </div>
+          )}
+
+          {/* Show Offers Button */}
+          {selectedLocation && selectedBranch && (
+            <div className="mt-4 pt-4 border-t border-gray-200">
+              <Link
+                href={`/${locale}/offers?location=${selectedLocation.id}&branch=${selectedBranch.id}`}
+                className="w-full flex items-center justify-center gap-2 bg-accent hover:bg-green-600 text-white px-4 py-3 rounded-xl font-bold transition-all shadow-lg shadow-accent/20"
+              >
+                <span className="material-symbols-outlined text-lg">local_offer</span>
+                {t('showOffers')}
+              </Link>
             </div>
           )}
         </div>
