@@ -46,7 +46,7 @@ This implementation plan transforms the static Hero component into a dynamic swi
     - Position overlays absolutely over images with z-index layering
     - _Requirements: 2.4, 2.5_
 
-- [~] 4. Add CSS animation for zoom effect
+- [ ] 4. Add CSS animation for zoom effect
   - [x] 4.1 Create zoom animation in global CSS or Tailwind config
     - Define @keyframes zoomIn animation (scale 1 to 1.05)
     - Set animation duration to 5 seconds with ease-out timing

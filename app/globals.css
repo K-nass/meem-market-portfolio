@@ -8,8 +8,9 @@
   --primary: #124e91;
   --primary-dark: #0b3666;
   --background-light: #f5f8fc;
-  --gold: #d4af37;
-  --gold-light: #f3e5ab;
+  --gold: #f59e0b;
+  --gold-light: #fbbf24;
+  --gold-dark: #d97706;
   --accent: #16a34a;
   --secondary-text: #6b7c93;
   --white: #ffffff;
@@ -23,6 +24,7 @@
   --color-background-light: var(--background-light);
   --color-gold: var(--gold);
   --color-gold-light: var(--gold-light);
+  --color-gold-dark: var(--gold-dark);
   --color-accent: var(--accent);
   --color-secondary-text: var(--secondary-text);
 
@@ -209,5 +211,84 @@ html {
   
   .swiper-pagination-bullet-active {
     width: 24px !important;
+  }
+}
+
+/* Featured Categories Swiper Custom Styles */
+.featured-swiper-container .swiper {
+  transition: all 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Custom pagination dots for featured swiper */
+.featured-swiper-container .swiper-pagination-bullet {
+  width: 10px !important;
+  height: 10px !important;
+  background-color: rgba(255, 255, 255, 0.6) !important;
+  opacity: 1 !important;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.featured-swiper-container .swiper-pagination-bullet-active {
+  background-color: var(--gold) !important;
+  width: 28px !important;
+  border-radius: 5px !important;
+  border-color: var(--gold);
+}
+
+.featured-swiper-container .swiper-pagination-bullet:hover {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  transform: scale(1.2);
+}
+
+/* Custom navigation buttons for featured swiper */
+.featured-swiper-container .swiper-button-prev-custom,
+.featured-swiper-container .swiper-button-next-custom {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.featured-swiper-container .swiper-button-prev-custom:hover,
+.featured-swiper-container .swiper-button-next-custom:hover {
+  background-color: rgba(255, 255, 255, 0.4) !important;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.featured-swiper-container .swiper-button-prev-custom:active,
+.featured-swiper-container .swiper-button-next-custom:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+/* Group hover effect for navigation visibility */
+.featured-swiper-container:hover .swiper-button-prev-custom,
+.featured-swiper-container:hover .swiper-button-next-custom {
+  opacity: 1;
+}
+
+/* Smooth slide transitions */
+.featured-swiper-container .swiper-slide {
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+
+.featured-swiper-container .swiper-slide-active {
+  opacity: 1;
+}
+
+/* Ensure navigation buttons are accessible on mobile */
+@media (max-width: 768px) {
+  .featured-swiper-container .swiper-button-prev-custom,
+  .featured-swiper-container .swiper-button-next-custom {
+    opacity: 1;
+    width: 36px !important;
+    height: 36px !important;
+  }
+  
+  .featured-swiper-container .swiper-pagination-bullet {
+    width: 8px !important;
+    height: 8px !important;
+  }
+  
+  .featured-swiper-container .swiper-pagination-bullet-active {
+    width: 20px !important;
   }
 }

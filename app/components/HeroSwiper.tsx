@@ -18,7 +18,7 @@ interface HeroSwiperProps {
   downloadButton: string;   // Button text
 }
 
-export default function HeroSwiper(props: HeroSwiperProps): JSX.Element {
+export default function HeroSwiper(props: HeroSwiperProps) {
   const {
     season,
     mainHeading,

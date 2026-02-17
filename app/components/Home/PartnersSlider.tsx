@@ -25,8 +25,8 @@ export default function PartnersSlider() {
     ];
 
     return (
-        <section className="py-16 bg-white overflow-hidden">
-            <div className="max-w-7xl mx-auto px-6">
+        <section className="py-16 bg-white bg-pattern overflow-hidden border border-amber-50">
+            {/* <div className="max-w-7xl mx-auto px-6"> */}
                 {/* Section Title */}
                 <div className="text-center mb-12">
                     <h2 className="text-3xl lg:text-4xl font-bold text-primary-dark mb-2 font-arabic">
@@ -40,8 +40,8 @@ export default function PartnersSlider() {
                 {/* Swiper Slider */}
                 <Swiper
                     modules={[Autoplay]}
-                    spaceBetween={30}
-                    slidesPerView={2}
+                    spaceBetween={50}
+                    slidesPerView={4}
                     loop={true}
                     autoplay={{
                         delay: 0,
@@ -72,14 +72,15 @@ export default function PartnersSlider() {
                                         src={partner.logo}
                                         alt={partner.name}
                                         fill
-                                        className="object-contain"
+                                        sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, (max-width: 1280px) 20vw, 16vw"
+                                        className="object-contain scale-150"
                                     />
                                 </div>
                             </div>
                         </SwiperSlide>
                     ))}
                 </Swiper>
-            </div>
+            {/* </div> */}
         </section>
     );
 }
