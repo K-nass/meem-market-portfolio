@@ -25,7 +25,7 @@ export default async function AboutUs() {
     ];
 
     return (
-        <section className="relative py-24 overflow-hidden" id='about'>
+        <section className="relative py-24 overflow-hidden">
             {/* Background */}
             <div className="absolute inset-0 bg-gradient-to-br from-primary-dark via-primary to-primary-dark"></div>
             <div className="absolute inset-0 opacity-[0.07]" style={{
