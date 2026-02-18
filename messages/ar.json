@@ -339,6 +339,11 @@
             "cleaning": "المنظفات"
         }
     },
+    "careerDetailPage": {
+        "description": "الوصف الوظيفي",
+        "requirements": "المتطلبات",
+        "applyNow": "قدم الآن"
+    },
     "modal": {
         "step1": "اختر الفرع",
         "step2": "اختر الإجراء",

@@ -339,6 +339,11 @@
             "cleaning": "Cleaning Supplies"
         }
     },
+    "careerDetailPage": {
+        "description": "Job Description",
+        "requirements": "Requirements",
+        "applyNow": "Apply Now"
+    },
     "modal": {
         "step1": "Select Branch",
         "step2": "Choose Action",

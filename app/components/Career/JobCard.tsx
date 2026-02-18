@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 interface JobCardProps {
   title: string;
   badge: string;
@@ -10,7 +12,7 @@ interface JobCardProps {
   icon?: string;
   variant?: 'large' | 'vertical' | 'default';
   buttonText: string;
-  onButtonClick?: () => void;
+  slug?: string;
 }
 
 const badgeColors = {
@@ -39,7 +41,7 @@ export default function JobCard({
   icon,
   variant = 'default',
   buttonText,
-  onButtonClick,
+  slug,
 }: JobCardProps) {
   const iconName = icon ? iconMap[icon] || icon : undefined;
 
@@ -75,12 +77,12 @@ export default function JobCard({
           {description && (
             <p className="text-slate-600 text-sm hidden md:block">{description}</p>
           )}
-          <button
-            onClick={onButtonClick}
+          <Link
+            href={slug ? `/career/${slug}` : '#'}
             className="bg-primary text-white px-6 py-2 rounded-lg font-bold hover:bg-primary-dark transition-colors text-sm"
           >
             {buttonText}
-          </button>
+          </Link>
         </div>
       </div>
     );
@@ -112,12 +114,12 @@ export default function JobCard({
               <span className="text-xs font-medium text-slate-700">{requirements}</span>
             </div>
           )}
-          <button
-            onClick={onButtonClick}
-            className="w-full bg-primary text-white px-6 py-2.5 rounded-lg font-bold hover:bg-primary-dark transition-colors text-sm"
+          <Link
+            href={slug ? `/career/${slug}` : '#'}
+            className="w-full bg-primary text-white px-6 py-2.5 rounded-lg font-bold hover:bg-primary-dark transition-colors text-sm block text-center"
           >
             {buttonText}
-          </button>
+          </Link>
         </div>
       </div>
     );
@@ -144,12 +146,12 @@ export default function JobCard({
           {location}
         </span>
       </div>
-      <button
-        onClick={onButtonClick}
-        className="w-full bg-primary/10 text-primary px-6 py-2.5 rounded-lg font-bold hover:bg-primary hover:text-white transition-all text-sm"
+      <Link
+        href={slug ? `/career/${slug}` : '#'}
+        className="w-full bg-primary/10 text-primary px-6 py-2.5 rounded-lg font-bold hover:bg-primary hover:text-white transition-all text-sm block text-center"
       >
         {buttonText}
-      </button>
+      </Link>
     </div>
   );
 }
