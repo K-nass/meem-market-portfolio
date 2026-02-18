@@ -34,7 +34,7 @@ export default function BranchesContent({ branches, locale }: BranchesContentPro
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 sm:space-y-8">
       {/* Filter Tabs */}
       <BranchesFilterTabs
         activeFilter={activeFilter}
@@ -43,9 +43,9 @@ export default function BranchesContent({ branches, locale }: BranchesContentPro
       />
 
       {/* Content Grid - Map and List */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
         {/* Map */}
-        <div className="order-2 lg:order-1">
+        <div className="order-2 lg:order-1 rounded-xl overflow-hidden shadow-lg min-h-[400px] sm:min-h-[500px]">
           <BranchesMapWrapper
             branches={filteredBranches}
             selectedBranch={selectedBranch}
@@ -55,7 +55,7 @@ export default function BranchesContent({ branches, locale }: BranchesContentPro
         </div>
 
         {/* Branch List */}
-        <div className="order-1 lg:order-2">
+        <div className="order-1 lg:order-2 rounded-xl bg-white p-4 sm:p-5 md:p-6 shadow-lg">
           <BranchesList
             branches={filteredBranches}
             selectedBranch={selectedBranch}

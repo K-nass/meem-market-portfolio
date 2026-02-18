@@ -321,6 +321,7 @@
         "filterKuwait": "الكويت",
         "filterSaudiArabia": "السعودية",
         "noBranchesFound": "لا توجد فروع للفلتر المحدد",
+        "tryDifferentFilter": "جرب اختيار فلتر مختلف لعرض الفروع في مواقع أخرى",
         "phone": "الهاتف",
         "hours": "ساعات العمل",
         "openingHours": "مفتوح {open} - {close}",

@@ -321,6 +321,7 @@
         "filterKuwait": "Kuwait",
         "filterSaudiArabia": "Saudi Arabia",
         "noBranchesFound": "No branches found for the selected filter",
+        "tryDifferentFilter": "Try selecting a different filter to view branches in other locations",
         "phone": "Phone",
         "hours": "Hours",
         "openingHours": "Open {open} - {close}",
