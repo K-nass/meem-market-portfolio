@@ -326,5 +326,16 @@
         "openingHours": "Open {open} - {close}",
         "mapLoadError": "Unable to load map. Please try again later.",
         "selectBranch": "Select a branch to view details"
+    },
+    "offerDetailPage": {
+        "title": "Offer Details",
+        "categories": {
+            "all": "All",
+            "ramadan": "Ramadan Essentials",
+            "fresh": "Fresh Products",
+            "electronics": "Electronics",
+            "household": "Household Items",
+            "cleaning": "Cleaning Supplies"
+        }
     }
 }

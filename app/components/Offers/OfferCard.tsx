@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { Link } from '@/i18n/navigation';
 
 interface OfferCardProps {
   variant?: 'large' | 'medium' | 'small' | 'tech' | 'minimal' | 'flash';
@@ -12,6 +13,7 @@ interface OfferCardProps {
   buttonHref?: string;
   progress?: number;
   progressLabel?: string;
+  offerId?: string;
 }
 
 export default function OfferCard({
@@ -26,7 +28,9 @@ export default function OfferCard({
   buttonHref = '#',
   progress,
   progressLabel,
+  offerId,
 }: OfferCardProps) {
+  const cardHref = offerId ? `/offers/${offerId}` : buttonHref;
   const badgeColors = {
     gold: 'bg-gold text-white',
     accent: 'bg-accent/90 backdrop-blur text-white',
@@ -35,6 +39,40 @@ export default function OfferCard({
 
   // Large variant with image overlay
   if (variant === 'large') {
+    if (offerId) {
+      return (
+        <Link
+          href={cardHref}
+          className="relative group overflow-hidden rounded-2xl shadow-xl transition-all hover:-translate-y-2 w-full h-[500px]"
+        >
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-10"></div>
+          {image && (
+            <Image
+              src={image}
+              alt={title}
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+          )}
+          <div className="absolute bottom-0 right-0 p-8 z-20 text-white w-full h-1/2 flex flex-col justify-end">
+            {badge && (
+              <span className={`${badgeColors[badgeColor]} text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest mb-3 inline-block shadow-lg w-fit`}>
+                {badge}
+              </span>
+            )}
+            <h3 className="text-3xl font-black mb-2 leading-tight">{title}</h3>
+            {description && (
+              <p className="text-white/80 text-sm mb-6 line-clamp-2">{description}</p>
+            )}
+            <span className="inline-flex items-center gap-2 text-gold font-bold group-hover:gap-4 transition-all text-sm uppercase tracking-wide">
+              عرض التفاصيل
+              <span className="material-symbols-outlined text-sm">arrow_back</span>
+            </span>
+          </div>
+        </Link>
+      );
+    }
+
     return (
       <div className="relative group overflow-hidden rounded-2xl shadow-xl transition-all hover:-translate-y-2 w-full h-[500px]">
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-10"></div>

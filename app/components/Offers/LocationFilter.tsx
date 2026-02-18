@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 interface LocationFilterProps {
   countryLabel: string;
@@ -19,9 +20,33 @@ export default function LocationFilter({
   cities,
   branches,
 }: LocationFilterProps) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  
   const [selectedCountry, setSelectedCountry] = useState(countries[0]);
   const [selectedCity, setSelectedCity] = useState(cities[0]);
   const [selectedBranch, setSelectedBranch] = useState(branches[0]);
+
+  // Initialize from URL params on mount
+  useEffect(() => {
+    const locationParam = searchParams.get('location');
+    const branchParam = searchParams.get('branch');
+    
+    if (locationParam) {
+      setSelectedCountry(locationParam);
+    }
+    if (branchParam) {
+      setSelectedBranch(branchParam);
+    }
+  }, [searchParams]);
+
+  const handleApplyFilters = () => {
+    // Update URL with location and branch parameters
+    const params = new URLSearchParams();
+    params.set('location', selectedCountry);
+    params.set('branch', selectedBranch);
+    router.push(`?${params.toString()}`);
+  };
 
   return (
     <div className="flex flex-wrap items-center gap-3 bg-slate-50 p-2 rounded-xl border border-slate-200 shadow-sm">
@@ -73,7 +98,10 @@ export default function LocationFilter({
           ))}
         </select>
       </div>
-      <button className="bg-primary hover:bg-primary-dark text-white p-2 rounded-lg transition-colors shadow-md">
+      <button 
+        onClick={handleApplyFilters}
+        className="bg-primary hover:bg-primary-dark text-white p-2 rounded-lg transition-colors shadow-md flex justify-center"
+      >
         <span className="material-symbols-outlined">sync</span>
       </button>
     </div>
