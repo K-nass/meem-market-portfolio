@@ -21,7 +21,7 @@ export default async function BranchesPage({ params }: BranchesPageProps) {
   const t = await getTranslations('branches');
 
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="min-h-screen bg-pattern">
       {/* Page Header */}
       <BranchesPageHeader
         title={t('title')}
@@ -29,10 +29,10 @@ export default async function BranchesPage({ params }: BranchesPageProps) {
       />
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-10 md:pb-12">
         <BranchesContent
           branches={branches}
-          locale={locale}
+          locale={locale as 'en' | 'ar'}
         />
       </div>
     </main>

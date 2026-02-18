@@ -8,7 +8,7 @@ export const locations: Location[] = [
       en: 'Saudi Arabia',
       ar: 'المملكة العربية السعودية'
     },
-    flag: '🇸🇦'
+    flag: '/sa.png'
   },
   {
     id: 'kuwait',
@@ -17,7 +17,7 @@ export const locations: Location[] = [
       en: 'Kuwait',
       ar: 'الكويت'
     },
-    flag: '🇰🇼'
+    flag: '/kw.png'
   }
 ];
 

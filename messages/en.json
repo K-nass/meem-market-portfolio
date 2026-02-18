@@ -321,6 +321,7 @@
         "filterKuwait": "Kuwait",
         "filterSaudiArabia": "Saudi Arabia",
         "noBranchesFound": "No branches found for the selected filter",
+        "tryDifferentFilter": "Try selecting a different filter to view branches in other locations",
         "phone": "Phone",
         "hours": "Hours",
         "openingHours": "Open {open} - {close}",
@@ -337,5 +338,35 @@
             "household": "Household Items",
             "cleaning": "Cleaning Supplies"
         }
+    },
+    "modal": {
+        "step1": "Select Branch",
+        "step2": "Choose Action",
+        "selectBranch": "Choose Your Branch",
+        "chooseAction": "What would you like to do?",
+        "actions": {
+            "map": {
+                "title": "View Location",
+                "description": "See branch location on map"
+            },
+            "contact": {
+                "title": "Contact & Social",
+                "description": "Get contact info and social links"
+            },
+            "offers": {
+                "title": "View Offers",
+                "description": "Browse location-specific offers"
+            }
+        },
+        "branchLocation": "Branch Location",
+        "contactInfo": "Contact Information",
+        "followUs": "Follow Us",
+        "noCoordinates": "Map location not available",
+        "phone": "Phone",
+        "hours": "Hours",
+        "closeModal": "Close modal",
+        "goBack": "Go back",
+        "selectLocation": "Select {location}",
+        "selectBranchAria": "Select {branch} branch"
     }
 }

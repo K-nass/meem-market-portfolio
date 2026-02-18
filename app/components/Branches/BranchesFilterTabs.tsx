@@ -31,11 +31,11 @@ export default function BranchesFilterTabs({
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6 sm:mb-8">
       <div
         role="tablist"
         aria-label="Branch location filters"
-        className="flex flex-wrap gap-2 sm:gap-4 justify-center"
+        className="flex flex-wrap gap-2 sm:gap-3 justify-center"
       >
         {tabs.map((tab) => {
           const isActive = tab.id === activeFilter;
@@ -49,13 +49,14 @@ export default function BranchesFilterTabs({
               onClick={() => onFilterChange(tab.id)}
               onKeyDown={(e) => handleKeyDown(e, tab.id)}
               className={`
-                px-6 py-3 rounded-lg font-medium text-sm sm:text-base
+                px-5 sm:px-6 md:px-8 py-3 sm:py-3.5 md:py-4 rounded-lg font-semibold text-sm sm:text-base
                 transition-all duration-200 ease-in-out
-                focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
+                focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary
+                min-h-[44px] min-w-[100px] sm:min-w-[120px]
                 ${
                   isActive
-                    ? 'bg-blue-600 text-white shadow-md hover:bg-blue-700'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    ? 'bg-primary text-white shadow-md'
+                    : 'bg-white text-gray-700 border border-gray-200 hover:scale-[1.02] hover:shadow-md'
                 }
               `}
             >
