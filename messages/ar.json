@@ -326,5 +326,16 @@
         "openingHours": "مفتوح {open} - {close}",
         "mapLoadError": "تعذر تحميل الخريطة. يرجى المحاولة مرة أخرى لاحقاً.",
         "selectBranch": "اختر فرعاً لعرض التفاصيل"
+    },
+    "offerDetailPage": {
+        "title": "تفاصيل العروض",
+        "categories": {
+            "all": "الكل",
+            "ramadan": "مستلزمات رمضان",
+            "fresh": "المنتجات الطازجة",
+            "electronics": "الأجهزة الإلكترونية",
+            "household": "الأدوات المنزلية",
+            "cleaning": "المنظفات"
+        }
     }
 }
