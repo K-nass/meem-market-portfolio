@@ -8,7 +8,7 @@ interface BranchesListProps {
   branches: Branch[];
   selectedBranch: Branch | null;
   onBranchSelect: (branch: Branch) => void;
-  locale: string;
+  locale: 'ar' | 'en';
 }
 
 export default function BranchesList({

@@ -337,5 +337,35 @@
             "household": "الأدوات المنزلية",
             "cleaning": "المنظفات"
         }
+    },
+    "modal": {
+        "step1": "اختر الفرع",
+        "step2": "اختر الإجراء",
+        "selectBranch": "اختر فرعك",
+        "chooseAction": "ماذا تريد أن تفعل؟",
+        "actions": {
+            "map": {
+                "title": "عرض الموقع",
+                "description": "شاهد موقع الفرع على الخريطة"
+            },
+            "contact": {
+                "title": "التواصل والسوشيال",
+                "description": "احصل على معلومات الاتصال وروابط السوشيال"
+            },
+            "offers": {
+                "title": "عرض العروض",
+                "description": "تصفح العروض الخاصة بالموقع"
+            }
+        },
+        "branchLocation": "موقع الفرع",
+        "contactInfo": "معلومات الاتصال",
+        "followUs": "تابعنا",
+        "noCoordinates": "الموقع على الخريطة غير متوفر",
+        "phone": "الهاتف",
+        "hours": "ساعات العمل",
+        "closeModal": "إغلاق النافذة",
+        "goBack": "رجوع",
+        "selectLocation": "اختر {location}",
+        "selectBranchAria": "اختر فرع {branch}"
     }
 }

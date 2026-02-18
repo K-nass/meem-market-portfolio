@@ -10,7 +10,7 @@ import { useTranslations } from 'next-intl';
 
 interface BranchesContentProps {
   branches: Branch[];
-  locale: string;
+  locale: 'ar' | 'en';
 }
 
 export default function BranchesContent({ branches, locale }: BranchesContentProps) {

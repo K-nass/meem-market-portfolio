@@ -1,13 +1,19 @@
 'use client';
 
+import { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination, Navigation, EffectFade } from 'swiper/modules';
+import { Autoplay, Navigation, EffectFade } from 'swiper/modules';
+import { useLocale } from 'next-intl';
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
+
+// Import location components and data
+import LocationCircle from './LocationModal/LocationCircle';
+import LocationModal from './LocationModal/LocationModal';
+import { locations } from '@/app/data/branches';
 
 interface HeroSwiperProps {
   season: string;           // "موسم رمضان 2026"
@@ -28,6 +34,25 @@ export default function HeroSwiper(props: HeroSwiperProps) {
     downloadButton
   } = props;
 
+  // Get current locale
+  const locale = useLocale();
+
+  // Modal state management
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedLocationId, setSelectedLocationId] = useState<string | null>(null);
+
+  // Handle location circle click
+  const handleLocationClick = (locationId: string) => {
+    setSelectedLocationId(locationId);
+    setIsModalOpen(true);
+  };
+
+  // Handle modal close
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+    setSelectedLocationId(null);
+  };
+
   const heroImages = [
     {
       src: '/heros/meem-hero-1.webp',
@@ -46,7 +71,7 @@ export default function HeroSwiper(props: HeroSwiperProps) {
   return (
     <div className="hero-swiper-container relative">
       <Swiper
-        modules={[Autoplay, Pagination, Navigation, EffectFade]}
+        modules={[Autoplay, Navigation, EffectFade]}
         effect="fade"
         fadeEffect={{
           crossFade: true
@@ -58,10 +83,6 @@ export default function HeroSwiper(props: HeroSwiperProps) {
           pauseOnMouseEnter: true
         }}
         loop={true}
-        pagination={{
-          clickable: true,
-          dynamicBullets: false
-        }}
         navigation={false}
         keyboard={{
           enabled: true
@@ -93,9 +114,9 @@ export default function HeroSwiper(props: HeroSwiperProps) {
       {/* Content Overlay */}
       <div className="absolute inset-0 z-10 pointer-events-none">
         <div className="max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-full">
+          <div className="flex flex-col justify-between h-full">
             {/* Content area */}
-            <div className="flex-1 pointer-events-auto">
+            <div className="flex-1 flex items-center pointer-events-auto">
               <div className="space-y-6">
                 {/* Main Heading */}
                 <h1 className="text-5xl md:text-7xl font-bold text-white font-arabic" dir="rtl">
@@ -112,21 +133,36 @@ export default function HeroSwiper(props: HeroSwiperProps) {
                   {callToAction}
                 </p>
 
-                {/* Action Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4 pt-2">
-                  <button className="px-6 py-3 bg-primary hover:bg-primary-dark text-white font-semibold rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl">
-                    {exploreButton}
-                  </button>
-                  <button className="px-6 py-3 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-lg border border-white/30 transition-colors duration-200 backdrop-blur-sm">
-                    {downloadButton}
-                  </button>
+                {/* Location Circles Container - Styled like download button */}
+                <div className="pt-2">
+                  <div className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg p-4 inline-flex gap-6 items-center transition-colors duration-200">
+                    {locations.map((location) => (
+                      <LocationCircle
+                        key={location.id}
+                        location={location}
+                        onClick={handleLocationClick}
+                        locale={locale}
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
 
+            {/* Removed bottom location circles container */}
           </div>
         </div>
       </div>
+
+      {/* Location Modal */}
+      {isModalOpen && selectedLocationId && (
+        <LocationModal
+          isOpen={isModalOpen}
+          onClose={handleModalClose}
+          locationId={selectedLocationId}
+          locale={locale}
+        />
+      )}
     </div>
   );
 }

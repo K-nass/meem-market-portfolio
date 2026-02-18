@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
 
 @layer base {
   @import url('https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
@@ -304,4 +305,135 @@ html {
   .featured-swiper-container .swiper-pagination-bullet-active {
     width: 20px !important;
   }
+}
+
+/* Category Carousel Custom Styles */
+.category-carousel-container {
+  position: relative;
+  width: 100%;
+}
+
+.category-carousel {
+  padding-bottom: 60px;
+}
+
+/* Category Carousel Pagination */
+.category-carousel .swiper-pagination {
+  bottom: 20px !important;
+}
+
+.category-carousel .swiper-pagination-bullet {
+  width: 10px !important;
+  height: 10px !important;
+  background-color: rgba(18, 78, 145, 0.3) !important;
+  opacity: 1 !important;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(18, 78, 145, 0.2);
+}
+
+.category-carousel .swiper-pagination-bullet-active {
+  background-color: var(--primary) !important;
+  width: 28px !important;
+  border-radius: 5px !important;
+  border-color: var(--primary);
+}
+
+.category-carousel .swiper-pagination-bullet:hover {
+  background-color: rgba(18, 78, 145, 0.5) !important;
+  transform: scale(1.2);
+}
+
+/* Category Carousel Navigation Buttons */
+.category-carousel-button-prev,
+.category-carousel-button-next {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.category-carousel-button-prev:hover,
+.category-carousel-button-next:hover {
+  background-color: rgba(255, 255, 255, 0.4) !important;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.category-carousel-button-prev:active,
+.category-carousel-button-next:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+/* Group hover effect for navigation visibility */
+.category-carousel-container:hover .category-carousel-button-prev,
+.category-carousel-container:hover .category-carousel-button-next {
+  opacity: 1;
+}
+
+/* Smooth slide transitions */
+.category-carousel .swiper-slide {
+  transition: opacity 600ms ease, transform 600ms ease;
+  height: auto;
+}
+
+.category-carousel .swiper-slide-active {
+  opacity: 1;
+}
+
+/* Ensure navigation buttons are accessible on mobile */
+@media (max-width: 768px) {
+  .category-carousel-button-prev,
+  .category-carousel-button-next {
+    opacity: 1;
+    width: 40px !important;
+    height: 40px !important;
+  }
+  
+  .category-carousel .swiper-pagination {
+    bottom: 12px !important;
+  }
+  
+  .category-carousel .swiper-pagination-bullet {
+    width: 8px !important;
+    height: 8px !important;
+  }
+  
+  .category-carousel .swiper-pagination-bullet-active {
+    width: 20px !important;
+  }
+}
+
+/* RTL Support for Category Carousel */
+[dir="rtl"] .category-carousel {
+  direction: rtl;
+}
+
+[dir="ltr"] .category-carousel {
+  direction: ltr;
+}
+
+/* Modal Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 200ms ease-out;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 250ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }

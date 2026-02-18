@@ -32,7 +32,7 @@ export default async function BranchesPage({ params }: BranchesPageProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
         <BranchesContent
           branches={branches}
-          locale={locale}
+          locale={locale as 'en' | 'ar'}
         />
       </div>
     </main>
