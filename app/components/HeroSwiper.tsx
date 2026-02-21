@@ -53,17 +53,20 @@ export default function HeroSwiper(props: HeroSwiperProps) {
     setSelectedLocationId(null);
   };
 
-  const heroImages = [
+  const heroSlides = [
     {
       src: '/heros/meem-hero-1.webp',
+      video: '/hero-bg-ramadan-1.mp4',
       alt: 'Meem Market hero image 1'
     },
     {
       src: '/heros/meem-hero-2.webp',
+      video: '/hero-bg-ramadan-2.mp4',
       alt: 'Meem Market hero image 2'
     },
     {
       src: '/heros/meem-hero-3.webp',
+      video: '/hero-bg-ramadan-1.mp4',
       alt: 'Meem Market hero image 3'
     }
   ] as const;
@@ -78,7 +81,7 @@ export default function HeroSwiper(props: HeroSwiperProps) {
         }}
         speed={800}
         autoplay={{
-          delay: 5000,
+          delay: 8000, // Increased delay to enjoy the video motion
           disableOnInteraction: false,
           pauseOnMouseEnter: true
         }}
@@ -91,20 +94,35 @@ export default function HeroSwiper(props: HeroSwiperProps) {
           enabled: true
         }}
       >
-        {heroImages.map((image, index) => (
+        {heroSlides.map((slide, index) => (
           <SwiperSlide key={index}>
-            <div className="relative w-full h-[600px] md:h-[700px]">
+            <div className="relative w-full h-[600px] md:h-[700px] overflow-hidden">
+              {/* Static Background Image (Visible on mobile or if video fails/reduced motion active) */}
               <img
-                src={image.src}
-                alt={image.alt}
-                className="w-full h-full object-cover hero-image-zoom"
+                src={slide.src}
+                alt={slide.alt}
+                className="w-full h-full object-cover hero-image-zoom motion-reduce:block"
                 loading={index === 0 ? 'eager' : 'lazy'}
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
                   e.currentTarget.parentElement?.classList.add('bg-primary-dark');
                 }}
               />
-              {/* Dark overlay for better text contrast */}
+
+              {/* Background Video layer (Visible only on desktop and follows motion preferences) */}
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="none"
+                poster={slide.src}
+                className="absolute inset-0 w-full h-full object-cover pointer-events-none z-0 hidden md:motion-safe:block"
+              >
+                <source src={slide.video} type="video/mp4" />
+              </video>
+
+              {/* Dark overlay for better text contrast - z-10 ensures it's above video but below content */}
               <div className="absolute inset-0 bg-black/60 z-10" />
             </div>
           </SwiperSlide>
@@ -114,28 +132,18 @@ export default function HeroSwiper(props: HeroSwiperProps) {
       {/* Content Overlay */}
       <div className="absolute inset-0 z-10 pointer-events-none">
         <div className="max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col justify-between h-full">
-            {/* Content area */}
-            <div className="flex-1 flex items-center pointer-events-auto">
-              <div className="space-y-6">
-                {/* Main Heading */}
-                <h1 className="text-5xl md:text-7xl font-bold text-white font-arabic" dir="rtl">
-                  {mainHeading}
-                </h1>
-
-                {/* Subheading */}
-                <h2 className="text-4xl md:text-6xl font-semibold text-white/90 font-arabic" dir="rtl">
-                  {subheading}
-                </h2>
-
+          <div className={`flex flex-col justify-end h-full pb-12 md:pb-24 ${locale === 'ar' ? 'items-start' : 'items-end'}`}>
+            {/* Content area - Positioned Bottom Right visually */}
+            <div className={`pointer-events-auto text-right flex flex-col ${locale === 'ar' ? 'items-start' : 'items-end'}`}>
+              <div className={`space-y-6 flex flex-col ${locale === 'ar' ? 'items-start' : 'items-end'}`}>
                 {/* Call-to-action text */}
-                <p className="text-lg md:text-xl text-white/80 font-arabic max-w-2xl" dir="rtl">
+                <p className="text-lg md:text-xl text-white/80 font-arabic max-w-2xl px-4" dir="rtl">
                   {callToAction}
                 </p>
 
                 {/* Location Circles Container - Styled like download button */}
                 <div className="pt-2">
-                  <div className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg p-4 inline-flex gap-6 items-center transition-colors duration-200">
+                  <div className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 rounded-2xl p-4 inline-flex gap-6 items-center transition-all duration-300">
                     {locations.map((location) => (
                       <LocationCircle
                         key={location.id}
@@ -148,8 +156,6 @@ export default function HeroSwiper(props: HeroSwiperProps) {
                 </div>
               </div>
             </div>
-
-            {/* Removed bottom location circles container */}
           </div>
         </div>
       </div>
