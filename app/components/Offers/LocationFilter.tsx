@@ -2,103 +2,130 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { CountryItem } from '@/app/types/locations';
+import { CategoryItem } from '@/app/types/category';
+
 
 interface LocationFilterProps {
-  countryLabel: string;
-  cityLabel: string;
+  locationLabel: string;
   branchLabel: string;
-  countries: string[];
-  cities: string[];
-  branches: string[];
+  categoryLabel: string;
+  locations: CountryItem[];
+  categories: CategoryItem[];
 }
 
+
 export default function LocationFilter({
-  countryLabel,
-  cityLabel,
+  locationLabel,
   branchLabel,
-  countries,
-  cities,
-  branches,
+  categoryLabel,
+  locations,
+  categories,
 }: LocationFilterProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
-  
-  const [selectedCountry, setSelectedCountry] = useState(countries[0]);
-  const [selectedCity, setSelectedCity] = useState(cities[0]);
-  const [selectedBranch, setSelectedBranch] = useState(branches[0]);
+
+  const [selectedCountrySlug, setSelectedCountrySlug] = useState('');
+  const [selectedBranchSlug, setSelectedBranchSlug] = useState('');
+  const [selectedCategorySlug, setSelectedCategorySlug] = useState('');
+
+
+  // Get current branches for the selected country
+  const currentBranches = locations.find(l => l.slug === selectedCountrySlug)?.branches || [];
+
 
   // Initialize from URL params on mount
   useEffect(() => {
     const locationParam = searchParams.get('location');
     const branchParam = searchParams.get('branch');
-    
+    const categoryParam = searchParams.get('category');
+
     if (locationParam) {
-      setSelectedCountry(locationParam);
+      setSelectedCountrySlug(locationParam);
+    } else if (locations.length > 0) {
+      setSelectedCountrySlug(locations[0].slug);
     }
+
     if (branchParam) {
-      setSelectedBranch(branchParam);
+      setSelectedBranchSlug(branchParam);
     }
-  }, [searchParams]);
+
+    if (categoryParam) {
+      setSelectedCategorySlug(categoryParam);
+    }
+  }, [searchParams, locations]);
 
   const handleApplyFilters = () => {
-    // Update URL with location and branch parameters
     const params = new URLSearchParams();
-    params.set('location', selectedCountry);
-    params.set('branch', selectedBranch);
+    if (selectedCountrySlug) params.set('location', selectedCountrySlug);
+    if (selectedBranchSlug) params.set('branch', selectedBranchSlug);
+    if (selectedCategorySlug) params.set('category', selectedCategorySlug);
     router.push(`?${params.toString()}`);
   };
 
+
+
   return (
     <div className="flex flex-wrap items-center gap-3 bg-slate-50 p-2 rounded-xl border border-slate-200 shadow-sm">
+
       <div className="flex flex-col px-3 border-l border-slate-200">
         <span className="text-[10px] text-slate-400 font-bold uppercase">
-          {countryLabel}
+          {locationLabel}
         </span>
         <select
-          value={selectedCountry}
-          onChange={(e) => setSelectedCountry(e.target.value)}
+          value={selectedCountrySlug}
+          onChange={(e) => {
+            setSelectedCountrySlug(e.target.value);
+            setSelectedBranchSlug(''); // Reset branch when country changes
+          }}
           className="bg-transparent border-none p-0 text-sm font-bold text-primary focus:ring-0 cursor-pointer"
         >
-          {countries.map((country) => (
-            <option key={country} value={country}>
-              {country}
+          {locations.map((location) => (
+            <option key={location.id} value={location.slug}>
+              {location.name_ar}
             </option>
           ))}
         </select>
       </div>
-      <div className="flex flex-col px-3 border-l border-slate-200">
-        <span className="text-[10px] text-slate-400 font-bold uppercase">
-          {cityLabel}
-        </span>
-        <select
-          value={selectedCity}
-          onChange={(e) => setSelectedCity(e.target.value)}
-          className="bg-transparent border-none p-0 text-sm font-bold text-primary focus:ring-0 cursor-pointer"
-        >
-          {cities.map((city) => (
-            <option key={city} value={city}>
-              {city}
-            </option>
-          ))}
-        </select>
-      </div>
-      <div className="flex flex-col px-3">
+
+      <div className="flex flex-col px-4 border-x border-slate-200">
         <span className="text-[10px] text-slate-400 font-bold uppercase">
           {branchLabel}
         </span>
         <select
-          value={selectedBranch}
-          onChange={(e) => setSelectedBranch(e.target.value)}
+          value={selectedBranchSlug}
+          onChange={(e) => setSelectedBranchSlug(e.target.value)}
           className="bg-transparent border-none p-0 text-sm font-bold text-primary focus:ring-0 cursor-pointer"
         >
-          {branches.map((branch) => (
-            <option key={branch} value={branch}>
-              {branch}
+          <option value="">{locationLabel === 'Location' ? 'All Branches' : 'جميع الفروع'}</option>
+          {currentBranches.map((branch) => (
+            <option key={branch.id} value={branch.slug}>
+              {branch.name_ar}
             </option>
           ))}
         </select>
       </div>
-      <button 
+
+      <div className="flex flex-col px-4">
+        <span className="text-[10px] text-slate-400 font-bold uppercase">
+          {categoryLabel}
+        </span>
+        <select
+          value={selectedCategorySlug}
+          onChange={(e) => setSelectedCategorySlug(e.target.value)}
+          className="bg-transparent border-none p-0 text-sm font-bold text-primary focus:ring-0 cursor-pointer"
+        >
+          <option value="">{locationLabel === 'Location' ? 'All Categories' : 'جميع التصنيفات'}</option>
+          {categories.map((category) => (
+            <option key={category.id} value={category.slug}>
+              {category.title}
+            </option>
+          ))}
+        </select>
+      </div>
+
+
+      <button
         onClick={handleApplyFilters}
         className="bg-primary hover:bg-primary-dark text-white p-2 rounded-lg transition-colors shadow-md flex justify-center"
       >
