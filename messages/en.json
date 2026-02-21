@@ -382,5 +382,23 @@
         "goBack": "Go back",
         "selectLocation": "Select {location}",
         "selectBranchAria": "Select {branch} branch"
+    },
+    "seo": {
+        "title": "Meem Market",
+        "titleTemplate": "%s | Meem Market",
+        "description": "Quality, freshness, and value in every visit. Discover the best offers and products at Meem Market.",
+        "keywords": "Meem Market, grocery, shopping, fresh products, household, Ramadan offers, Saudi Arabia",
+        "branches": {
+            "title": "Our Branches",
+            "description": "Find your nearest Meem Market branch across Saudi Arabia and Kuwait. View opening hours and contact details."
+        },
+        "career": {
+            "title": "Careers",
+            "description": "Join the Meem Market team. Explore job opportunities and build your career with a leading retail company."
+        },
+        "offers": {
+            "title": "Latest Offers",
+            "description": "Don't miss out on the best deals! Browse our latest weekly offers and seasonal discounts at Meem Market."
+        }
     }
 }

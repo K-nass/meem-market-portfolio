@@ -12,9 +12,9 @@ export default async function WhyChooseUs() {
                     <span className="material-symbols-outlined text-sm">verified</span>
                     <span className="text-xs font-bold uppercase tracking-widest">{t('badge')}</span>
                 </div>
-                <h1 className="text-primary-dark tracking-tight text-4xl lg:text-6xl font-bold leading-tight mb-6">
+                <h2 className="text-primary-dark tracking-tight text-4xl lg:text-6xl font-bold leading-tight mb-6">
                     {t('title')}
-                </h1>
+                </h2>
                 <div className="w-24 h-1.5 bg-gold mx-auto rounded-full mb-8"></div>
                 <p className="text-secondary-text text-lg lg:text-xl font-medium max-w-2xl mx-auto leading-relaxed">
                     {t('description')}

@@ -1,5 +1,27 @@
 import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
+
+export async function generateMetadata({ params }: OfferDetailPageProps): Promise<Metadata> {
+    const { id } = await params;
+    const offer = getOfferData(id);
+
+    if (!offer) {
+        return {
+            title: 'Offer Not Found',
+        };
+    }
+
+    return {
+        title: offer.title,
+        description: `${offer.category} - ${offer.branch}`,
+        openGraph: {
+            title: offer.title,
+            description: `${offer.category} - ${offer.branch}`,
+            images: offer.images.length > 0 ? [{ url: offer.images[0] }] : [],
+        },
+    };
+}
 import OfferDetailHero from '@/app/components/OfferDetails/OfferDetailHero';
 import { OfferCategoryFilter, OfferImageGallery, RelatedOffers } from '@/app/components/OfferDetails';
 

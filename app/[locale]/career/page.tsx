@@ -4,8 +4,24 @@ import StatsSection from '@/app/components/Career/StatsSection';
 import JobCard from '@/app/components/Career/JobCard';
 import TalentPoolCTA from '@/app/components/Career/TalentPoolCTA';
 import { careersService } from '@/app/services/careers';
+import { Metadata } from 'next';
 
-export default async function CareerPage() {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'seo.career' });
+
+  return {
+    title: t('title'),
+    description: t('description'),
+    openGraph: {
+      title: t('title'),
+      description: t('description'),
+    },
+  };
+}
+
+export default async function CareerPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   const t = await getTranslations('careerPage');
 
   // Fetch careers from API

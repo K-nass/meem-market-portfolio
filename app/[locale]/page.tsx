@@ -11,26 +11,38 @@ import WhyChooseUs from '../components/Home/WhyChooseUs';
 import PartnersSlider from '../components/Home/PartnersSlider';
 import Careers from '../components/Home/Careers';
 
-export default async function Home({ params }: { params: { locale: string } }) {
-    // Validate locale parameter against supported locales
-    const validLocales = ['en', 'ar'];
-    const locale = await params?.locale && validLocales.includes(params.locale) 
-        ? params.locale 
-        : 'en';
-    
+import { Metadata } from "next";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: 'seo' });
+
+    return {
+        title: t('title'),
+        description: t('description'),
+        openGraph: {
+            title: t('title'),
+            description: t('description'),
+        },
+    };
+}
+
+export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
+
     const t = await getTranslations('categories');
 
     return (
-        <>
+        <main>
             <Hero />
-            
+
             {/* Category Carousel Section - Full Width Premium Design */}
             <section className="w-full bg-pattern bg-gradient-to-b from-gray-50 to-white py-16 relative z-20 overflow-hidden">
                 {/* Ramadan Kareem Decoration - Top Left */}
                 <div className="absolute top-0 left-0 z-0 opacity-90">
-                    <img 
-                        src="/ramadan-kareem.png" 
-                        alt="Ramadan Kareem" 
+                    <img
+                        src="/ramadan-kareem.png"
+                        alt="Ramadan Kareem"
                         className="h-48 md:h-64 lg:h-80 object-contain"
                     />
                 </div>
@@ -43,7 +55,7 @@ export default async function Home({ params }: { params: { locale: string } }) {
                             <h3 className="text-4xl md:text-5xl font-bold text-gray-900">{t('featuredCategories')}</h3>
                         </div>
                         <a href="#" className="hidden md:flex items-center gap-2 text-primary hover:text-primary-dark font-semibold transition-colors mt-4 md:mt-0 group">
-                            {t('viewAllCategories')} 
+                            {t('viewAllCategories')}
                             <span className="material-icons-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
                         </a>
                     </div>
@@ -63,6 +75,6 @@ export default async function Home({ params }: { params: { locale: string } }) {
             <PartnersSlider />
             <Careers />
             <AppBanner />
-        </>
+        </main>
     );
 }
