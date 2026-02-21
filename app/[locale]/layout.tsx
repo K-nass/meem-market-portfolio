@@ -7,10 +7,64 @@ import "leaflet/dist/leaflet.css";
 import Navbar from "../components/Home/Navbar";
 import Footer from "../components/Home/Footer";
 
-export const metadata: Metadata = {
-    title: "Meem Market - Ramadan Offers",
-    description: "Quality, freshness, and value in every visit.",
-};
+import { getTranslations } from "next-intl/server";
+import { API_BASE_URL } from "@/app/config/api";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: 'seo' });
+
+
+    return {
+        metadataBase: new URL(API_BASE_URL),
+        title: {
+            default: t('title'),
+            template: t('titleTemplate'),
+        },
+        description: t('description'),
+        keywords: t('keywords'),
+        robots: {
+            index: true,
+            follow: true,
+            googleBot: {
+                index: true,
+                follow: true,
+                'max-video-preview': -1,
+                'max-image-preview': 'large',
+                'max-snippet': -1,
+            },
+        },
+        alternates: {
+            canonical: `/${locale}`,
+            languages: {
+                en: '/en',
+                ar: '/ar',
+            },
+        },
+        openGraph: {
+            title: t('title'),
+            description: t('description'),
+            url: `./`,
+            siteName: t('title'),
+            locale: locale === 'ar' ? 'ar_SA' : 'en_US',
+            type: 'website',
+            images: [
+                {
+                    url: '/og-image.jpg',
+                    width: 1200,
+                    height: 630,
+                    alt: t('title'),
+                },
+            ],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: t('title'),
+            description: t('description'),
+            images: ['/og-image.jpg'],
+        },
+    };
+}
 
 export function generateStaticParams() {
     return routing.locales.map((locale) => ({ locale }));

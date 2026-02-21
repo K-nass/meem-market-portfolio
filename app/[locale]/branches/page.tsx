@@ -4,6 +4,22 @@ import { branches } from '@/app/data/branches';
 import BranchesPageHeader from '@/app/components/Branches/BranchesPageHeader';
 import BranchesContent from '@/app/components/Branches/BranchesContent';
 
+import { Metadata } from 'next';
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'seo.branches' });
+
+  return {
+    title: t('title'),
+    description: t('description'),
+    openGraph: {
+      title: t('title'),
+      description: t('description'),
+    },
+  };
+}
+
 interface BranchesPageProps {
   params: Promise<{ locale: string }>;
 }

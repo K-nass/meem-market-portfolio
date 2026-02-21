@@ -1,4 +1,19 @@
 import { getTranslations } from 'next-intl/server';
+import { Metadata } from 'next';
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'seo.offers' });
+
+  return {
+    title: t('title'),
+    description: t('description'),
+    openGraph: {
+      title: t('title'),
+      description: t('description'),
+    },
+  };
+}
 import OffersHero from '@/app/components/Offers/OffersHero';
 import LocationFilter from '@/app/components/Offers/LocationFilter';
 import OfferCard from '@/app/components/Offers/OfferCard';

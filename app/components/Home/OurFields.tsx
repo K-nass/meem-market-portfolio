@@ -5,7 +5,7 @@ export default function OurFields() {
     const t = useTranslations('ourFields');
 
     return (
-        <div className="max-w-7xl mx-auto px-6 py-12 lg:py-20 font-arabic">
+        <section className="max-w-7xl mx-auto px-6 py-12 lg:py-20 font-arabic">
             {/* Intro Section */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16 items-start">
                 <div className="lg:col-span-6 flex flex-col gap-6">
@@ -13,9 +13,9 @@ export default function OurFields() {
                         <span className="material-symbols-outlined text-sm">stars</span>
                         {t('introBadge')}
                     </div>
-                    <h1 className="text-primary text-4xl lg:text-6xl font-black leading-tight">
+                    <h2 className="text-primary text-4xl lg:text-6xl font-black leading-tight">
                         {t('title')} <span className="text-gold">{t('titleHighlight')}</span>
-                    </h1>
+                    </h2>
                     <p className="text-slate-600 text-lg leading-relaxed text-justify">
                         {t('introDescription')}
                     </p>
@@ -122,6 +122,6 @@ export default function OurFields() {
                 </div>
                 <p className="text-primary text-sm font-medium">{t('footer')}</p>
             </div>
-        </div>
+        </section>
     );
 };

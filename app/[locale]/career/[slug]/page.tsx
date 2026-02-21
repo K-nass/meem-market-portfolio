@@ -2,6 +2,29 @@ import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { careersService } from '@/app/services/careers';
 import { MapPin, FileText, CheckCircle, Send } from 'lucide-react';
+import { Metadata } from 'next';
+
+export async function generateMetadata({ params }: CareerDetailPageProps): Promise<Metadata> {
+  const { slug } = await params;
+
+  try {
+    const response = await careersService.getCareerBySlug(slug);
+    const career = response.data;
+
+    return {
+      title: career.title,
+      description: career.description.substring(0, 160),
+      openGraph: {
+        title: career.title,
+        description: career.description.substring(0, 160),
+      },
+    };
+  } catch (error) {
+    return {
+      title: 'Career Not Found',
+    };
+  }
+}
 
 interface CareerDetailPageProps {
   params: Promise<{
