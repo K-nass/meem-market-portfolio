@@ -35,6 +35,7 @@ export default async function RootLayout({
     const isCareerPage = false; // Will be handled by career layout
 
     return (
+
         <html lang={locale} dir={dir}>
             <head>
                 <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
@@ -50,3 +51,4 @@ export default async function RootLayout({
         </html>
     );
 }
+

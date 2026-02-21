@@ -1,5 +1,13 @@
 {
     "common": {
+        "errorTitle": "Something went wrong",
+        "errorMessage": "An unexpected error occurred. Please try again.",
+        "retry": "Try Again",
+        "goHome": "Back to Home",
+        "loadingTitle": "Loading Content",
+        "loadingMessage": "Please wait while we fetch the latest data...",
+        "notFoundTitle": "Page Not Found",
+        "notFoundMessage": "The page you're looking for doesn't exist or has been moved.",
         "weeklyFlyers": "Weekly Flyers",
         "departments": "Departments",
         "meemPlus": "Meem Plus",
@@ -199,12 +207,9 @@
             "branch": "Al Olaya"
         },
         "filter": {
-            "countryLabel": "Country",
-            "cityLabel": "City",
+            "locationLabel": "Location",
             "branchLabel": "Branch",
-            "countries": ["Saudi Arabia", "United Arab Emirates", "Kuwait"],
-            "cities": ["Riyadh", "Jeddah", "Dammam"],
-            "branches": ["Al Olaya Main Branch", "Al Malqa Branch", "Al Nakheel Branch"]
+            "categoryLabel": "Category"
         },
         "offers": {
             "seasonal": {
@@ -241,6 +246,10 @@
                 "title": "24-Hour Deals",
                 "description": "Exclusive deals that change daily, available only via the app.",
                 "button": "Download App Now"
+            },
+            "noOffers": {
+                "title": "No Offers Found",
+                "description": "We couldn't find any offers for the selected filters. Please try checking another location or category."
             }
         },
         "whyChoose": {
