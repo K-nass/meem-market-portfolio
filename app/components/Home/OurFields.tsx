@@ -5,7 +5,7 @@ export default function OurFields() {
     const t = useTranslations('ourFields');
 
     return (
-        <section className="max-w-7xl mx-auto px-6 py-12 lg:py-20 font-arabic">
+        <section id='products' className="max-w-7xl mx-auto px-6 py-12 lg:py-20 font-arabic">
             {/* Intro Section */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16 items-start">
                 <div className="lg:col-span-6 flex flex-col gap-6">

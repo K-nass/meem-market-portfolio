@@ -60,7 +60,7 @@ export default async function Navbar() {
                             <span className="absolute inset-0 bg-primary/5 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-300 origin-center"></span>
                         </Link>
                         <Link
-                            href="#"
+                            href="#products"
                             className="relative px-4 py-2 text-sm font-medium text-gray-700 hover:text-primary transition-all duration-300 group"
                         >
                             <span className="relative z-10">{t('ourProducts')}</span>
