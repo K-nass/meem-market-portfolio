@@ -18,18 +18,33 @@ function mapCountryIdToLocationId(countryId: number): string {
 }
 
 /**
+ * Maps country slug to country code for flag images
+ * @param slug - Country slug from API (e.g., 'saudi-arabia', 'kuwait')
+ * @returns Country code (e.g., 'sa', 'kw')
+ */
+function mapSlugToCountryCode(slug: string): string {
+  const slugMap: Record<string, string> = {
+    'saudi-arabia': 'sa',
+    'kuwait': 'kw',
+  };
+  return slugMap[slug.toLowerCase()] || 'sa';
+}
+
+/**
  * Transforms API CountryItem format to internal Location format
  * @param item - The CountryItem from the API
  * @returns Location object compatible with application components
  */
 export function transformLocationData(item: CountryItem): Location {
+  const countryCode = mapSlugToCountryCode(item.slug);
+  
   return {
     id: mapCountryIdToLocationId(item.id),
-    code: item.slug.toUpperCase() as 'SA' | 'KW',
+    code: countryCode.toUpperCase() as 'SA' | 'KW',
     name: {
       en: item.name_en,
       ar: item.name_ar,
     },
-    flag: `/${item.slug}.png`,
+    flag: `/${countryCode}.png`,
   };
 }

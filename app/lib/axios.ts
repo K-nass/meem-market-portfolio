@@ -1,8 +1,17 @@
 import axios from 'axios';
-import { API_BASE_URL } from '@/app/config/api';
+
+// Determine the base URL based on environment
+const getBaseURL = () => {
+  // Server-side: use the external API directly
+  if (typeof window === 'undefined') {
+    return process.env.NEXT_PUBLIC_API_BASE_URL || 'https://api.meem-market.com';
+  }
+  // Client-side: use relative URL to leverage Next.js rewrites
+  return '';
+};
 
 const axiosInstance = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL: getBaseURL(),
   headers: {
     'Content-Type': 'application/json',
   },
