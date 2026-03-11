@@ -2,6 +2,7 @@ import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { branchesService } from '@/app/services/branches';
 import { transformBranchData } from '@/app/components/LocationModal/utils/transformBranchData';
+import { Branch } from '@/app/types/branch';
 import BranchesPageHeader from '@/app/components/Branches/BranchesPageHeader';
 import BranchesContent from '@/app/components/Branches/BranchesContent';
 
@@ -38,7 +39,7 @@ export default async function BranchesPage({ params }: BranchesPageProps) {
   const t = await getTranslations('branches');
 
   // Fetch branches from API server-side
-  let branches;
+  let branches: Branch[];
   try {
     const branchesData = await branchesService.getBranches();
     branches = branchesData.data.map((item) => transformBranchData(item));
