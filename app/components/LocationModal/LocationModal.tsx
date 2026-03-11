@@ -4,12 +4,15 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { Branch } from '@/app/types/branch';
-import { branches, locations } from '@/app/data/branches';
+import { locations } from '@/app/data/branches';
+import { useBranches } from './hooks/useBranches';
 import StepIndicator from './StepIndicator';
 import BranchSelectionStep from './BranchSelectionStep';
 import ActionSelectionStep from './ActionSelectionStep';
 import LocationMapView from './LocationMapView';
 import ContactSocialView from './ContactSocialView';
+import LoadingState from './LoadingState';
+import ErrorState from './ErrorState';
 
 interface LocationModalProps {
   isOpen: boolean;
@@ -25,9 +28,11 @@ export default function LocationModal({ isOpen, onClose, locationId, locale }: L
   const [selectedBranch, setSelectedBranch] = useState<Branch | null>(null);
   const [selectedAction, setSelectedAction] = useState<'map' | 'contact' | 'offers' | null>(null);
 
-  // Get location and branches data
+  // Fetch branches from API
+  const { branches, loading, error, retry } = useBranches(locationId);
+
+  // Get location data
   const location = locations.find((loc) => loc.id === locationId);
-  const locationBranches = branches.filter((branch) => branch.locationId === locationId);
 
   // Reset state when modal closes
   useEffect(() => {
@@ -47,10 +52,10 @@ export default function LocationModal({ isOpen, onClose, locationId, locale }: L
   // Handle action selection
   const handleActionSelect = (action: 'map' | 'contact' | 'offers') => {
     if (action === 'offers' && selectedBranch && location) {
-      // Construct URL with locale, location name, and branch name
+      // Construct URL with locale, location name, and branch slug
       const locationName = location.name[locale as 'en' | 'ar'];
-      const branchName = selectedBranch.name[locale as 'en' | 'ar'];
-      const url = `/${locale}/offers?location=${encodeURIComponent(locationName)}&branch=${encodeURIComponent(branchName)}`;
+      const branchSlug = selectedBranch.slug || selectedBranch.name[locale as 'en' | 'ar'];
+      const url = `/${locale}/offers?location=${encodeURIComponent(locationName)}&branch=${encodeURIComponent(branchSlug)}`;
       
       // Close modal and redirect
       onClose();
@@ -174,11 +179,29 @@ export default function LocationModal({ isOpen, onClose, locationId, locale }: L
 
           {/* Step 1: Branch Selection */}
           {currentStep === 1 && !selectedAction && (
-            <BranchSelectionStep
-              branches={locationBranches}
-              onBranchSelect={handleBranchSelect}
-              locale={locale}
-            />
+            <>
+              {loading && <LoadingState />}
+              
+              {error && !loading && (
+                <ErrorState error={error} onRetry={retry} />
+              )}
+              
+              {!loading && !error && branches.length === 0 && (
+                <div className="flex flex-col items-center justify-center py-12">
+                  <p className="text-gray-600 text-lg text-center">
+                    {t('noBranches')}
+                  </p>
+                </div>
+              )}
+              
+              {!loading && !error && branches.length > 0 && (
+                <BranchSelectionStep
+                  branches={branches}
+                  onBranchSelect={handleBranchSelect}
+                  locale={locale}
+                />
+              )}
+            </>
           )}
 
           {/* Step 2: Action Selection */}

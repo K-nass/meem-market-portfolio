@@ -32,4 +32,5 @@ export interface Branch {
     open: string;
     close: string;
   };
+  slug?: string;
 }

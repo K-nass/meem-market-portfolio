@@ -381,7 +381,15 @@
         "closeModal": "Close modal",
         "goBack": "Go back",
         "selectLocation": "Select {location}",
-        "selectBranchAria": "Select {branch} branch"
+        "selectBranchAria": "Select {branch} branch",
+        "loading": "Loading branches...",
+        "retry": "Retry",
+        "noBranches": "No branches available for this location.",
+        "errors": {
+            "network": "Unable to connect. Please check your internet connection.",
+            "server": "Service temporarily unavailable. Please try again later.",
+            "unknown": "An unexpected error occurred. Please try again."
+        }
     },
     "seo": {
         "title": "Meem Market",
