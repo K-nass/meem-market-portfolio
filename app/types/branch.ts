@@ -33,4 +33,13 @@ export interface Branch {
     close: string;
   };
   slug?: string;
+  socialLinks?: {
+    tiktok?: string;
+    website?: string;
+    facebook?: string;
+    snapchat?: string;
+    whatsapp?: string;
+    instagram?: string;
+  };
+  googleMapsUrl?: string;
 }

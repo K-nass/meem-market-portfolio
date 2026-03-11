@@ -30,6 +30,19 @@ export function transformBranchData(item: BranchItem): Branch {
   // Map country_id to locationId
   const locationId = mapCountryIdToLocationId(item.country_id);
 
+  // Transform social links, filtering out null/empty values
+  const socialLinks = item.social_links ? {
+    tiktok: item.social_links.tiktok || undefined,
+    website: item.social_links.website || undefined,
+    facebook: item.social_links.facebook || undefined,
+    snapchat: item.social_links.snapchat || undefined,
+    whatsapp: item.social_links.whatsapp || undefined,
+    instagram: item.social_links.instagram || undefined,
+  } : undefined;
+
+  // Filter out social links object if all values are undefined
+  const hasSocialLinks = socialLinks && Object.values(socialLinks).some(link => link !== undefined);
+
   return {
     id: item.id.toString(),
     locationId: locationId,
@@ -52,5 +65,7 @@ export function transformBranchData(item: BranchItem): Branch {
     } : undefined,
     phone: item.phone || item.unified_phone || undefined,
     hours: undefined, // API doesn't provide hours
+    socialLinks: hasSocialLinks ? socialLinks : undefined,
+    googleMapsUrl: item.google_maps_url || undefined,
   };
 }

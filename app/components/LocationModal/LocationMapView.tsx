@@ -4,6 +4,7 @@ import { Branch } from '@/app/types/branch';
 import { useTranslations } from 'next-intl';
 import dynamic from 'next/dynamic';
 import { MapPinOff, MapPin } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 // Dynamically import map components to avoid SSR issues
 const MapContainer = dynamic(
@@ -30,6 +31,30 @@ interface LocationMapViewProps {
 
 export default function LocationMapView({ branch, locale }: LocationMapViewProps) {
   const t = useTranslations('modal');
+  const [customIcon, setCustomIcon] = useState<any>(null);
+
+  // Fix Leaflet icon issue in Next.js
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const L = require('leaflet');
+      
+      // Delete default icon to prevent conflicts
+      delete (L.Icon.Default.prototype as any)._getIconUrl;
+      
+      // Create custom icon using Leaflet's default icon with CDN URLs
+      const icon = L.icon({
+        iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+        iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
+        shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+      });
+      
+      setCustomIcon(icon);
+    }
+  }, []);
 
   // Handle missing coordinates with fallback UI
   if (!branch.coordinates) {
@@ -42,6 +67,15 @@ export default function LocationMapView({ branch, locale }: LocationMapViewProps
             {branch.address[locale as 'en' | 'ar']}
           </p>
         )}
+      </div>
+    );
+  }
+
+  // Don't render map until icon is loaded
+  if (!customIcon) {
+    return (
+      <div className="flex items-center justify-center py-12">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
       </div>
     );
   }
@@ -64,7 +98,10 @@ export default function LocationMapView({ branch, locale }: LocationMapViewProps
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          <Marker position={[branch.coordinates.lat, branch.coordinates.lng]}>
+          <Marker 
+            position={[branch.coordinates.lat, branch.coordinates.lng]}
+            icon={customIcon}
+          >
             <Popup>
               <div className="text-center">
                 <strong className="block mb-1">
