@@ -10,10 +10,10 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/effect-fade';
 
-// Import location components and data
+// Import location components and hooks
 import LocationCircle from './LocationModal/LocationCircle';
 import LocationModal from './LocationModal/LocationModal';
-import { locations } from '@/app/data/branches';
+import { useLocations } from '@/app/hooks/useLocations';
 
 interface HeroSwiperProps {
   season: string;           // "موسم رمضان 2026"
@@ -36,6 +36,9 @@ export default function HeroSwiper(props: HeroSwiperProps) {
 
   // Get current locale
   const locale = useLocale();
+
+  // Fetch locations from API
+  const { locations, loading, error, retry } = useLocations();
 
   // Modal state management
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -143,16 +146,41 @@ export default function HeroSwiper(props: HeroSwiperProps) {
 
                 {/* Location Circles Container - Styled like download button */}
                 <div className="pt-2">
-                  <div className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 rounded-2xl p-4 inline-flex gap-6 items-center transition-all duration-300">
-                    {locations.map((location) => (
-                      <LocationCircle
-                        key={location.id}
-                        location={location}
-                        onClick={handleLocationClick}
-                        locale={locale}
-                      />
-                    ))}
-                  </div>
+                  {loading && (
+                    <div className="bg-white/10 backdrop-blur-sm border border-white/30 rounded-2xl p-4 inline-flex gap-6 items-center" role="status" aria-live="polite">
+                      <div className="flex gap-6 items-center">
+                        <div className="w-16 h-16 rounded-full bg-white/20 animate-pulse" />
+                        <div className="w-16 h-16 rounded-full bg-white/20 animate-pulse" />
+                      </div>
+                      <span className="sr-only">Loading locations...</span>
+                    </div>
+                  )}
+                  
+                  {error && (
+                    <div className="bg-red-500/10 backdrop-blur-sm border border-red-500/30 rounded-2xl p-4 inline-flex gap-4 items-center" role="alert" aria-live="assertive">
+                      <p className="text-white text-sm">{error.message}</p>
+                      <button
+                        onClick={retry}
+                        className="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg text-white text-sm transition-colors"
+                        aria-label="Retry loading locations"
+                      >
+                        Retry
+                      </button>
+                    </div>
+                  )}
+                  
+                  {!loading && !error && locations.length > 0 && (
+                    <div className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 rounded-2xl p-4 inline-flex gap-6 items-center transition-all duration-300">
+                      {locations.map((location) => (
+                        <LocationCircle
+                          key={location.id}
+                          location={location}
+                          onClick={handleLocationClick}
+                          locale={locale}
+                        />
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

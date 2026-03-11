@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { Branch } from '@/app/types/branch';
-import { locations } from '@/app/data/branches';
+import { useLocations } from '@/app/hooks/useLocations';
 import { useBranches } from './hooks/useBranches';
 import StepIndicator from './StepIndicator';
 import BranchSelectionStep from './BranchSelectionStep';
@@ -30,6 +30,9 @@ export default function LocationModal({ isOpen, onClose, locationId, locale }: L
 
   // Fetch branches from API
   const { branches, loading, error, retry } = useBranches(locationId);
+
+  // Fetch locations from API
+  const { locations, loading: locationsLoading } = useLocations();
 
   // Get location data
   const location = locations.find((loc) => loc.id === locationId);
@@ -180,13 +183,21 @@ export default function LocationModal({ isOpen, onClose, locationId, locale }: L
           {/* Step 1: Branch Selection */}
           {currentStep === 1 && !selectedAction && (
             <>
-              {loading && <LoadingState />}
+              {(loading || locationsLoading) && <LoadingState />}
               
               {error && !loading && (
                 <ErrorState error={error} onRetry={retry} />
               )}
               
-              {!loading && !error && branches.length === 0 && (
+              {!loading && !error && !locationsLoading && !location && (
+                <div className="flex flex-col items-center justify-center py-12">
+                  <p className="text-gray-600 text-lg text-center">
+                    {t('locationNotFound')}
+                  </p>
+                </div>
+              )}
+              
+              {!loading && !error && branches.length === 0 && location && (
                 <div className="flex flex-col items-center justify-center py-12">
                   <p className="text-gray-600 text-lg text-center">
                     {t('noBranches')}
@@ -194,7 +205,7 @@ export default function LocationModal({ isOpen, onClose, locationId, locale }: L
                 </div>
               )}
               
-              {!loading && !error && branches.length > 0 && (
+              {!loading && !error && !locationsLoading && branches.length > 0 && location && (
                 <BranchSelectionStep
                   branches={branches}
                   onBranchSelect={handleBranchSelect}

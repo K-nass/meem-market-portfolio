@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { branches } from '@/app/data/branches';
+import { branchesService } from '@/app/services/branches';
+import { transformBranchData } from '@/app/components/LocationModal/utils/transformBranchData';
 import BranchesPageHeader from '@/app/components/Branches/BranchesPageHeader';
 import BranchesContent from '@/app/components/Branches/BranchesContent';
 
@@ -35,6 +36,17 @@ export default async function BranchesPage({ params }: BranchesPageProps) {
 
   // Fetch translations for branches page
   const t = await getTranslations('branches');
+
+  // Fetch branches from API server-side
+  let branches;
+  try {
+    const branchesData = await branchesService.getBranches();
+    branches = branchesData.data.map((item) => transformBranchData(item));
+  } catch (error) {
+    console.error('Error fetching branches:', error);
+    // Return empty array on error - component will handle empty state
+    branches = [];
+  }
 
   return (
     <main className="min-h-screen bg-pattern">
