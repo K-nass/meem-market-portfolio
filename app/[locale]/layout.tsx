@@ -90,12 +90,12 @@ export default async function RootLayout({
 
     return (
 
-        <html lang={locale} dir={dir}>
+        <html lang={locale} dir={dir} suppressHydrationWarning>
             <head>
                 <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
                 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
             </head>
-            <body className="bg-pattern min-h-screen flex flex-col antialiased">
+            <body className="bg-pattern min-h-screen flex flex-col antialiased" suppressHydrationWarning>
                 <NextIntlClientProvider>
                     <Navbar />
                     {children}

@@ -46,7 +46,19 @@ export default async function OffersPage({ searchParams }: OffersPageProps) {
   ])
 
   const currrentLocation = locationsData.data.find(l => l.slug === location);
+  const currentBranch = currrentLocation?.branches.find(b => b.slug === branch);
   const t = await getTranslations('offersPage');
+  const { locale } = await (async () => {
+    const { getLocale } = await import('next-intl/server');
+    return { locale: await getLocale() };
+  })();
+
+  const countryName = currrentLocation
+    ? (locale === 'ar' ? currrentLocation.name_ar : currrentLocation.name_en)
+    : location;
+  const branchName = currentBranch
+    ? (locale === 'ar' ? currentBranch.name_ar : currentBranch.name_en)
+    : branch;
 
   const features = [
     {
@@ -73,8 +85,8 @@ export default async function OffersPage({ searchParams }: OffersPageProps) {
           badge={t('hero.badge')}
           title={t('hero.title')}
           description={t('hero.description')}
-          country={location}
-          branch={branch}
+          country={countryName}
+          branch={branchName}
         />)}
 
       <section className="bg-white border-b border-slate-200">

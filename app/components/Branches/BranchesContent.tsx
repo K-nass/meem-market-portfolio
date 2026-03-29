@@ -11,12 +11,15 @@ import { useTranslations } from 'next-intl';
 interface BranchesContentProps {
   branches: Branch[];
   locale: 'ar' | 'en';
+  initialBranchSlug?: string;
 }
 
-export default function BranchesContent({ branches, locale }: BranchesContentProps) {
+export default function BranchesContent({ branches, locale, initialBranchSlug }: BranchesContentProps) {
   const t = useTranslations('branches');
   const [activeFilter, setActiveFilter] = useState<FilterOption>('all');
-  const [selectedBranch, setSelectedBranch] = useState<Branch | null>(null);
+  const [selectedBranch, setSelectedBranch] = useState<Branch | null>(
+    () => branches.find(b => b.slug === initialBranchSlug) ?? null
+  );
 
   // Filter branches based on active filter
   const filteredBranches = useMemo(() => {

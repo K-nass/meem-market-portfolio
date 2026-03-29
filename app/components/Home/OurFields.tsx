@@ -103,9 +103,9 @@ export default function OurFields() {
                     </div>
                     <h4 className="text-primary font-bold text-lg">{t('cta.title')}</h4>
                     <p className="text-slate-500 text-xs">{t('cta.subtitle')}</p>
-                    <button className="w-full py-3 rounded-xl bg-primary text-white font-bold text-sm hover:bg-primary-dark transition-colors mt-2">
+                    <a href="/offers" className="w-full py-3 rounded-xl bg-primary text-white font-bold text-sm hover:bg-primary-dark transition-colors mt-2 text-center block">
                         {t('cta.link')}
-                    </button>
+                    </a>
                 </div>
             </div>
 

@@ -103,7 +103,7 @@ export default async function CompetitiveValue() {
                             {features.map((feature, index) => (
                                 <div
                                     key={feature.key}
-                                    className="group flex items-center gap-5 p-5 rounded-2xl bg-white border border-gray-200/60 hover:border-gold/40 shadow-sm hover:shadow-lg transition-all duration-400 hover:-translate-y-0.5 cursor-default"
+                                    className="group flex items-center gap-5 p-5 rounded-2xl bg-white border border-gray-200/60 shadow-sm transition-all duration-400"
                                     style={{ animationDelay: `${index * 120}ms` }}
                                 >
                                     {/* Icon */}
@@ -121,13 +121,6 @@ export default async function CompetitiveValue() {
                                         <p className="text-sm text-secondary-text">
                                             {feature.desc}
                                         </p>
-                                    </div>
-
-                                    {/* Arrow indicator */}
-                                    <div className="flex-shrink-0 w-9 h-9 rounded-full bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 transition-colors duration-300">
-                                        <span className="material-icons-outlined text-gold text-lg rtl:rotate-180">
-                                            arrow_forward
-                                        </span>
                                     </div>
                                 </div>
                             ))}

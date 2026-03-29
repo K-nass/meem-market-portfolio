@@ -68,12 +68,12 @@ export default function Careers() {
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5, delay: 0.6 }}
                             >
-                                <button className="bg-gold hover:bg-gold-light text-primary-dark font-bold px-10 py-4 rounded-xl transition-all shadow-xl shadow-gold/20 flex items-center gap-2 group">
+                                <a href="/career" className="bg-gold hover:bg-gold-light text-primary-dark font-bold px-10 py-4 rounded-xl transition-all shadow-xl shadow-gold/20 flex items-center gap-2 group w-fit">
                                     <span>{t('button')}</span>
                                     <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">
                                         arrow_forward
                                     </span>
-                                </button>
+                                </a>
                             </motion.div>
                         </div>
                     </div>

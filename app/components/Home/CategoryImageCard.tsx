@@ -93,18 +93,6 @@ export default function CategoryImageCard({ category, locale }: CategoryImageCar
         }`}
       />
       
-      {/* Glassmorphic Explore Badge - appears on hover */}
-      <div 
-        className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 transition-all duration-300 ease-out ${
-          isHovered ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
-        }`}
-      >
-        <div className="px-6 py-3 bg-white/20 backdrop-blur-md rounded-full border border-white/30 shadow-lg">
-          <span className="text-white font-semibold text-sm tracking-wide">
-            {locale === 'ar' ? 'استكشف' : 'Explore'}
-          </span>
-        </div>
-      </div>
     </Link>
   );
 }
