@@ -54,10 +54,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                             <span className="uppercase tracking-widest text-xs font-bold text-gold mb-2 block">{t('seasonalCollections')}</span>
                             <h3 className="text-4xl md:text-5xl font-bold text-gray-900">{t('featuredCategories')}</h3>
                         </div>
-                        <a href="#" className="hidden md:flex items-center gap-2 text-primary hover:text-primary-dark font-semibold transition-colors mt-4 md:mt-0 group">
-                            {t('viewAllCategories')}
-                            <span className="material-icons-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
-                        </a>
+
                     </div>
 
                     {/* Category Carousel */}
