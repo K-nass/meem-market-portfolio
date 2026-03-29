@@ -24,10 +24,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 interface BranchesPageProps {
   params: Promise<{ locale: string }>;
+  searchParams: Promise<{ branch?: string }>;
 }
 
-export default async function BranchesPage({ params }: BranchesPageProps) {
+export default async function BranchesPage({ params, searchParams }: BranchesPageProps) {
   const { locale } = await params;
+  const { branch: branchSlug } = await searchParams;
 
   // Validate locale parameter
   const validLocales = ['ar', 'en'];
@@ -62,6 +64,7 @@ export default async function BranchesPage({ params }: BranchesPageProps) {
         <BranchesContent
           branches={branches}
           locale={locale as 'en' | 'ar'}
+          initialBranchSlug={branchSlug}
         />
       </div>
     </main>

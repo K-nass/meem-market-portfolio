@@ -15,20 +15,20 @@ export default async function AppBanner() {
                         {t('description')}
                     </p>
                     <div className="flex gap-4">
-                        <button className="flex items-center gap-3 bg-gray-900 text-white px-5 py-3 rounded-xl hover:opacity-90 transition-opacity">
+                        <div className="flex items-center gap-3 bg-gray-900 text-white px-5 py-3 rounded-xl opacity-60 cursor-not-allowed select-none">
                             <span className="material-icons-outlined text-2xl">apple</span>
                             <div className="text-left rtl:text-right leading-tight">
                                 <div className="text-[10px] uppercase font-semibold opacity-70">{t('downloadOn')}</div>
                                 <div className="text-sm font-bold">{t('appStore')}</div>
                             </div>
-                        </button>
-                        <button className="flex items-center gap-3 bg-gray-900 text-white px-5 py-3 rounded-xl hover:opacity-90 transition-opacity">
+                        </div>
+                        <div className="flex items-center gap-3 bg-gray-900 text-white px-5 py-3 rounded-xl opacity-60 cursor-not-allowed select-none">
                             <span className="material-icons-outlined text-2xl">android</span>
                             <div className="text-left rtl:text-right leading-tight">
                                 <div className="text-[10px] uppercase font-semibold opacity-70">{t('getItOn')}</div>
                                 <div className="text-sm font-bold">{t('googlePlay')}</div>
                             </div>
-                        </button>
+                        </div>
                     </div>
                 </div>
 

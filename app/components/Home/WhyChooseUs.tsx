@@ -45,7 +45,6 @@ export default async function WhyChooseUs() {
                     </div>
                     <div className="mt-auto pt-4 border-t border-primary/5 flex items-center gap-2 text-gold font-bold text-sm">
                         <span>{t('manyProducts.link')}</span>
-                        <span className="material-symbols-outlined text-sm">arrow_back</span>
                     </div>
                 </div>
 
@@ -71,7 +70,6 @@ export default async function WhyChooseUs() {
                     </div>
                     <div className="mt-auto pt-4 border-t border-primary/5 flex items-center gap-2 text-primary font-bold text-sm">
                         <span>{t('spaciousAreas.link')}</span>
-                        <span className="material-symbols-outlined text-sm">arrow_back</span>
                     </div>
                 </div>
 
@@ -97,7 +95,6 @@ export default async function WhyChooseUs() {
                     </div>
                     <div className="mt-auto pt-4 border-t border-primary/5 flex items-center gap-2 text-gold font-bold text-sm">
                         <span>{t('familyDestination.link')}</span>
-                        <span className="material-symbols-outlined text-sm">arrow_back</span>
                     </div>
                 </div>
             </div>
@@ -111,14 +108,14 @@ export default async function WhyChooseUs() {
                         {t('cta.subtitle')}
                     </p>
                     <div className="flex flex-wrap justify-center gap-4">
-                        <button className="bg-gold hover:bg-gold-light text-primary-dark font-bold px-10 py-4 rounded-xl transition-colors duration-300 flex items-center gap-2 cursor-pointer">
+                        <a href="/branches" className="bg-gold hover:bg-gold-light text-primary-dark font-bold px-10 py-4 rounded-xl transition-colors duration-300 flex items-center gap-2">
                             <span className="material-symbols-outlined">map</span>
                             {t('cta.nearbyBranches')}
-                        </button>
-                        <button className="text-white bg-primary hover:bg-primary/90 font-bold px-10 py-4 rounded-xl transition-colors duration-300 backdrop-blur-sm flex items-center gap-2 cursor-pointer">
+                        </a>
+                        <a href="/career" className="text-white bg-primary hover:bg-primary/90 font-bold px-10 py-4 rounded-xl transition-colors duration-300 backdrop-blur-sm flex items-center gap-2">
                             <span className="material-symbols-outlined">call</span>
                             {t('cta.contactUs')}
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>

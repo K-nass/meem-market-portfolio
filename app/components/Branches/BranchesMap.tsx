@@ -158,8 +158,11 @@ function BranchesMapContent({ branches, selectedBranch, onBranchSelect, locale }
 
   // Calculate map center from branch coordinates
   const mapCenter = useMemo((): LatLngExpression => {
+    if (selectedBranch?.coordinates) {
+      return [selectedBranch.coordinates.lat, selectedBranch.coordinates.lng];
+    }
+
     if (branchesWithCoords.length === 0) {
-      // Default center (Middle East region)
       return [25.0, 45.0];
     }
 

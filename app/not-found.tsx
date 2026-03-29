@@ -1,26 +1,64 @@
-import Link from 'next/link';
-import { FileQuestion, Home } from 'lucide-react';
 
 export default function NotFound() {
     return (
-        <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4">
-            <div className="max-w-md w-full text-center">
-                <div className="inline-flex items-center justify-center w-24 h-24 bg-blue-100 rounded-full mb-8">
-                    <FileQuestion className="w-12 h-12 text-blue-600" />
-                </div>
-                <h1 className="text-4xl font-black text-slate-900 mb-4 tracking-tight">
-                    404 - Page Not Found
+        <div style={{
+            minHeight: '100vh',
+            margin: '0',
+            background: 'linear-gradient(135deg, #003366 0%, #004080 50%, #002952 100%)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontFamily: 'sans-serif',
+            color: 'white',
+            textAlign: 'center',
+            padding: '2rem',
+            overflow: 'hidden',
+            position: 'fixed',
+            inset: 0,
+        }}>
+            <div>
+                <div style={{
+                    fontSize: '8rem',
+                    fontWeight: 900,
+                    color: 'rgba(255,255,255,0.08)',
+                    lineHeight: 1,
+                    marginBottom: '-1rem',
+                    userSelect: 'none',
+                }}>404</div>
+
+                <div style={{
+                    width: '80px',
+                    height: '80px',
+                    background: 'rgba(255,255,255,0.1)',
+                    borderRadius: '16px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    margin: '0 auto 1.5rem',
+                    fontSize: '2.5rem',
+                }}>🔍</div>
+
+                <h1 style={{ fontSize: '2rem', fontWeight: 900, marginBottom: '0.75rem' }}>
+                    الصفحة غير موجودة
                 </h1>
-                <p className="text-slate-600 mb-10 text-lg">
-                    The page you are looking for doesn't exist or has been moved.
+                <p style={{ color: 'rgba(255,255,255,0.6)', maxWidth: '360px', margin: '0 auto 2.5rem' }}>
+                    الصفحة التي تبحث عنها غير موجودة أو تم نقلها.
                 </p>
-                <Link
-                    href="/"
-                    className="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold px-8 py-4 rounded-2xl transition-all shadow-xl hover:shadow-primary/20 active:scale-95"
-                >
-                    <Home className="w-5 h-5" />
-                    Return Home
-                </Link>
+
+                <a href="/" style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    background: '#D4AF37',
+                    color: '#002952',
+                    fontWeight: 700,
+                    padding: '1rem 2rem',
+                    borderRadius: '1rem',
+                    textDecoration: 'none',
+                    fontSize: '1rem',
+                }}>
+                    🏠 العودة للرئيسية
+                </a>
             </div>
         </div>
     );
