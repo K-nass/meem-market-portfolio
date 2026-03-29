@@ -43,9 +43,8 @@ export default function CategoryImageCard({ category, locale }: CategoryImageCar
   };
 
   return (
-    <Link
-      href={`/${locale}/categories/${category.id}`}
-      className="block relative w-full aspect-[4/3] rounded-[24px] overflow-hidden cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+    <div
+      className="block relative w-full aspect-[4/3] rounded-[24px] overflow-hidden focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -93,6 +92,6 @@ export default function CategoryImageCard({ category, locale }: CategoryImageCar
         }`}
       />
       
-    </Link>
+    </div>
   );
 }
