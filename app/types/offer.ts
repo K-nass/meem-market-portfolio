@@ -31,6 +31,15 @@ export interface OfferCategory {
   end_date: string;
   is_active: boolean;
   is_expired: boolean;
+  sort_order?: number;
+  pdf_url?: string;
+  pdfUrl?: string;
+  pdf_file?: string;
+  pdfFile?: string;
+  offer_pdf_url?: string;
+  offerPdfUrl?: string;
+  offer_book_pdf_url?: string;
+  offerBookPdfUrl?: string;
   branch: Branch;
 }
 
@@ -39,6 +48,14 @@ export interface Offer {
   title: string;
   image: string;
   sort_order: number;
+  pdf_url?: string;
+  pdfUrl?: string;
+  pdf_file?: string;
+  pdfFile?: string;
+  offer_pdf_url?: string;
+  offerPdfUrl?: string;
+  offer_book_pdf_url?: string;
+  offerBookPdfUrl?: string;
   offer_category: OfferCategory;
 }
 
@@ -71,4 +88,8 @@ export interface OffersResponse {
   data: Offer[];
   links: PaginationLinks;
   meta: PaginationMeta;
+}
+
+export interface OfferDetailResponse {
+  data: Offer;
 }
